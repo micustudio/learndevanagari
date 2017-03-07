@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
-import 'rxjs/Rx';
-import { Observable } from "rxjs";
+import 'rxjs/add/operator/map';
+import { domain } from './app.domain';
 
 @Injectable()
 export class MetaService {
@@ -13,14 +13,15 @@ export class MetaService {
 
     getTwitterFollowers(){
       console.log("Hello from the MEta SERVICE! before I get to get some FOLLOWERS");
-        return this.http.get('https://intense-plains-43467.herokuapp.com/meta/' + 'twitter')
+        return this.http.get(domain + 'meta/twitter')
                 .map((response: Response) => {
+                    console.log("The RESPONSE IS:");
+                    console.log(response)
                     const retrievedItems = response.json().obj;
                 console.log("The retrieved items from the Meta Service are :" + retrievedItems);
                     this.twitterCount = retrievedItems;
                     return retrievedItems;
-                })
-                .catch((error: Response) => Observable.throw(error.json()));
+                });
     }
 
 }
