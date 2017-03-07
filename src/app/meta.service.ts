@@ -13,7 +13,7 @@ export class MetaService {
 
     getTwitterFollowers(){
       console.log("Hello from the MEta SERVICE! before I get to get some FOLLOWERS");
-        return this.http.get('http://localhost:4200/meta/' + 'twitter')
+        return this.http.get('https://intense-plains-43467.herokuapp.com/meta/' + 'twitter')
                 .map((response: Response) => {
                     const retrievedItems = response.json().obj;
                 console.log("The retrieved items from the Meta Service are :" + retrievedItems);
