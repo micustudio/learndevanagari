@@ -12,6 +12,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { MetaService } from './meta.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [MetaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
