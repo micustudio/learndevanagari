@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
-import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
 import { domain } from './app.domain';
 
 @Injectable()
@@ -21,7 +22,7 @@ export class MetaService {
                 console.log("The retrieved items from the Meta Service are :" + retrievedItems);
                     this.twitterCount = retrievedItems;
                     return retrievedItems;
-                });
+                }).catch((error: Response) => Observable.throw(error.json()));
     }
 
 }

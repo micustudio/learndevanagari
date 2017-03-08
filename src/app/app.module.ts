@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routing } from "./app.routing";
+import { Routing } from "./app.routing";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,7 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { AdminComponent } from './admin-module/admin/admin.component';
 
+import { AdminService } from './admin-module/admin.service';
 import { MetaService } from './meta.service';
 
 @NgModule({
@@ -22,15 +23,20 @@ import { MetaService } from './meta.service';
     HomeComponent,
     PortfolioComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    AdminComponent
+    
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+
     HttpModule,
-    routing
+    Routing
   ],
-  providers: [MetaService],
+  providers: [
+        AdminService,
+        MetaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
