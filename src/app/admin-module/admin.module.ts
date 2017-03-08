@@ -7,7 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ItemAddComponent } from './item-add/item-add.component';
 
-import { AdminRouting } from "./admin.routing";
+import { adminRouting } from "./admin.routing";
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { AdminRouting } from "./admin.routing";
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    AdminRouting
+    adminRouting
     //ItemModule
   ],
   declarations: [

@@ -4,6 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const logger = require('morgan');
 
 const compression = require('compression');
 
@@ -20,7 +21,7 @@ mongoose.connect('mongodb://learndev-admin:Crm975482x@ds119750.mlab.com:19750/le
 
 // Use Gzip Compression
 app.use(compression());
-
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -48,7 +49,7 @@ server.listen(port, () => console.log(`API running on localhost:${port}`));
 app.use('/meta', metaRoutes);
 app.use('/item', itemRoutes);
 app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+app.use('/adm', adminRoutes);
 app.use('/comment', commentRoutes);
 
 app.get('/*', function(req, res, next) {
