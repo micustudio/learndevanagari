@@ -1,0 +1,10 @@
+<p>
+  item-list works!
+</p>
+<p>The total number of items is: {{ items.length }} </p>
+
+<app-item
+      *ngFor="let individualItem of items"
+      [inputItem]="individualItem"
+      >
+</app-item>

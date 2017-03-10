@@ -2,3 +2,19 @@
   admin works!
 </p>
 <router-outlet></router-outlet>
+
+        <div class="container">
+        <h1 *ngIf="!isLoggedIn()">Welcome, guest. Please sign in.</h1>
+        <h1 *ngIf="isLoggedIn()">Welcome, Admin!</h1>
+        <header class="row spacing">
+            <nav class="col-10 col-md-offset-2">
+                <ul class="nav nav-tabs">
+                    <li routerLinkActive="active" class="nav-item"><a class="nav-link" [routerLink]="['signup']" *ngIf="isLoggedIn()">Signup</a><li>
+                    <li routerLinkActive="active" class="nav-item"><a class="nav-link" [routerLink]="['signin']" *ngIf="!isLoggedIn()">Signin</a><li>
+                    <li routerLinkActive="active" class="nav-item"><a class="nav-link" [routerLink]="['logout']" *ngIf="isLoggedIn()">Logout</a><li>
+                    <li routerLinkActive="active" class="nav-item"><a class="nav-link" [routerLink]="['additem']" *ngIf="isLoggedIn()">Add/Edit Item</a><li>
+                </ul>
+            </nav>
+        </header>
+            <router-outlet></router-outlet>
+        </div>

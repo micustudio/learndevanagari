@@ -1,3 +1,54 @@
 <p>
   item-add works!
 </p>
+<div class="row">
+
+    <div class ="col-md-6">
+        <form (ngSubmit)="onPublish(f)" #f="ngForm">
+            <div class = "form-group">
+                <label for="char">Character</label>
+                <input type="text" 
+                    id="char" 
+                    class="form-control"
+                    [ngModel]="item?.char"
+                    name="char"
+                    required>
+
+                <label for="letter">Letter(English)</label>
+                <input type="text" 
+                    id="letter" 
+                    class="form-control"
+                    [ngModel]="item?.letter"
+                    name="letter"
+                    required>
+
+                <label for="category">Category</label>
+                <input type="text" 
+                    id="category" 
+                    class="form-control"
+                    [ngModel]="item?.category"
+                    name="category"
+                    required>
+
+                <label for="translation">Translation</label>
+                <input type="text"
+                    id="translation" 
+                    class="form-control" 
+                    [ngModel]="item?.translation"
+                    name="translation"
+                    >
+                <label for="combination">Combination(Include Spaces)</label>
+                <input type="text"
+                    id="combination" 
+                    class="form-control" 
+                    [ngModel]="item?.combination"
+                    name="combination"
+                    >
+            </div>
+            <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
+            <button class ="btn btn-primary" type="submit">Add Item</button>
+        </form>
+    </div>
+</div>
+
+<app-item-list></app-item-list>

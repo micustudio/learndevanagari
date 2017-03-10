@@ -14,6 +14,10 @@ import { AdminComponent } from './admin-module/admin/admin.component';
 
 import { AdminService } from './admin-module/admin.service';
 import { MetaService } from './meta.service';
+import { UserService } from './user.service';
+
+import { ItemModule } from "./item-module/item.module";
+import { UserModule } from "./user-module/user.module";
 
 @NgModule({
   declarations: [
@@ -25,17 +29,18 @@ import { MetaService } from './meta.service';
     AboutComponent,
     ContactComponent,
     AdminComponent
-    
   ],
   imports: [
     BrowserModule,
-
     HttpModule,
-    Routing
+    Routing,
+    ItemModule,
+    UserModule
   ],
   providers: [
         AdminService,
-        MetaService
+        MetaService,
+        UserService
   ],
   bootstrap: [AppComponent]
 })

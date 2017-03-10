@@ -41,6 +41,4 @@ export class AdminService {
     isLoggedIn() {
         return localStorage.getItem('token') !== null;
     }
-
-
 }

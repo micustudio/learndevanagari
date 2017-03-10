@@ -9,7 +9,7 @@ let userSchema = new Schema({
     fullName: {type: String},
     profilePic: {type: String},
     location: {type: String},
-    biographu: {type: String},
+    biography: {type: String},
     items: [{type: Schema.Types.ObjectId, ref: 'Item'}],
     comments: [{type: Schema.Types.ObjectId, ref:'Comment'}]
 });
