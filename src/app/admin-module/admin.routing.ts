@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, CanActivate } from "@angular/router";
 
 import { AdminComponent } from './admin/admin.component';
 import { SigninComponent } from "./signin/signin.component";
