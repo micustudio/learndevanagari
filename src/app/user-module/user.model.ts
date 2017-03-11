@@ -1,4 +1,4 @@
-import { Item } from './item-module/item.model';
+import { Item } from '../item-module/item.model';
 
 export class User {
     constructor( 
@@ -9,6 +9,7 @@ export class User {
         public profilePic?: string,
         public location?: string,
         public biography?: string,
+        public date?: Date,
         public items?: Item[]){
             
         }
