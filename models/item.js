@@ -4,7 +4,7 @@ let Comment = require('./comment');
 let mongooseUniqueValidator = require('mongoose-unique-validator');
 
 let itemSchema = new Schema({
-    char: {type: String, required: true, unique: true},
+    char: {type: String, required: true},
     letter: {type: String, required: true},
     category: {type: String, required: true},
     translation: {type: String, default: null},
@@ -13,7 +13,7 @@ let itemSchema = new Schema({
     incorrect: {type: Number, default: 0},
     streak: {type: Number, default: 0},
     rank:  {type: Number, default: 0},
-    unseen: {type: Boolean, default: 'false'},
+    unseen: {type: Boolean, default: 'true'},
     impressions: {type: Number, default: 0},
     date: {type: Date, default: Date.now },
     comments: [{type: Schema.Types.ObjectId, ref:'Comment'}]

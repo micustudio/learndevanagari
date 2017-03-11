@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/signin', function(req, res, next) {
-    User.findOne({email: req.body.email}).populate('items')
+    User.findOne({email: req.body.email}).populate('items', 'items')
         .exec(function(err, user) {
         
         if (err) {
@@ -37,7 +37,11 @@ router.post('/signin', function(req, res, next) {
         console.log("LOOKS LIKE THE USER SIGNIN WORKED!");
         console.log("The USER DETAILS IS:");
         console.log(user);
-        var token = jwt.sign({user: user}, 'secretMyKeyUserApp', {expiresIn: 7200});
+        console.log("The item details are:");
+        console.log(user.items);
+        let token = jwt.sign({user: user}, 'secretMyKeyUserApp', {expiresIn: 7200});
+        console.log("The token is...");
+        console.log(token);
         res.status(200).json({
             message: 'Successfully logged in!',
             token: token,
@@ -66,9 +70,17 @@ router.post('/', function(req, res, next) {
               let item = new Item ({
                     char: items[i].char,
                     letter: items[i].letter,
+                    category: items[i].category,
                     translation: items[i].translation,
-                    combination: items[i].combination
+                    combination: items[i].combination,
+                    correct: 0,
+                    incorrect: 0,
+                    streak: 0,
+                    rank: 0,
+                    unseen: true,
+                    impressions: 0
               })
+              console.log(item);
             user.items.push(item);
         }
 

@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { User } from '../user.model';
 import { UserService } from '../../user.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,7 +13,8 @@ import { UserService } from '../../user.service';
 export class SignupComponent implements OnInit {
   myForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
     onSignup(){
         let user = new User(
@@ -21,10 +24,14 @@ export class SignupComponent implements OnInit {
         );
         this.userService.signup(user)
             .subscribe(
-                data => console.log(data),
+                data => {
+                    console.log(data);
+                    this.router.navigateByUrl('/signin');
+                },
                 error => console.log(error)
             );
         this.myForm.reset();
+
     }
 
 

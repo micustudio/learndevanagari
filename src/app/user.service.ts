@@ -2,8 +2,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
-import { Router } from '@angular/router';
-
 import { domain } from './app.domain';
 import { User } from './user-module/user.model';
 
@@ -12,8 +10,7 @@ import { User } from './user-module/user.model';
 export class UserService {
   user: User;
 
-  constructor(private http: Http,
-              private router: Router) { }
+  constructor(private http: Http) { }
 
     signup(user: User){
         const body = JSON.stringify(user);
@@ -25,7 +22,6 @@ export class UserService {
                   const retrievedUser = response.json();
                   console.log("The retrievedUser is ");
                   console.log(retrievedUser);
-                  this.router.navigateByUrl('/signin');
                 })
                 .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -34,10 +30,7 @@ export class UserService {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(domain + 'user/signin', body, {headers: headers})
-                .map((response: Response) => {
-                  const retrievedUser = response.json();
-                  this.router.navigateByUrl('/home');
-              })
+                .map((response: Response) => {response.json()})
                 .catch((error: Response) => Observable.throw(error.json()));
     }
 
