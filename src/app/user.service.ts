@@ -30,8 +30,16 @@ export class UserService {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(domain + 'user/signin', body, {headers: headers})
-                .map((response: Response) => {response.json()})
+                .map((response: Response) => response.json())
                 .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    logout() {
+        localStorage.clear();
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem('token') !== null;
     }
 
 }

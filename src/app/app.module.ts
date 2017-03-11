@@ -14,9 +14,12 @@ import { AdminComponent } from './admin-module/admin/admin.component';
 import { AdminService } from './admin-module/admin.service';
 import { MetaService } from './meta.service';
 import { UserService } from './user.service';
+import { AuthGuard } from './auth-guard.service';
 
 import { ItemModule } from "./item-module/item.module";
 import { UserModule } from "./user-module/user.module";
+import { StudyComponent } from './study/study.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { UserModule } from "./user-module/user.module";
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    AdminComponent
+    AdminComponent,
+    StudyComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { UserModule } from "./user-module/user.module";
   providers: [
         AdminService,
         MetaService,
-        UserService
+        UserService,
+        AuthGuard
   ],
   bootstrap: [AppComponent]
 })

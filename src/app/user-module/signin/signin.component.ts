@@ -24,7 +24,7 @@ export class SigninComponent implements OnInit {
                     console.log("The data form the signin component is coming back as...");
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
-                    this.router.navigateByUrl('/home');
+                    this.router.navigateByUrl('/study');
                 },
                 error => console.error(error)
             )
