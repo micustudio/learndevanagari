@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log(data);
-                    this.router.navigateByUrl('/signin');
+                    this.router.navigateByUrl('/login');
                 },
                 error => console.log(error)
             );
@@ -41,6 +41,10 @@ export class SignupComponent implements OnInit {
             email: new FormControl(null, Validators.required),
             password: new FormControl(null, Validators.required)
         })
+  }
+
+  login() {
+      this.router.navigateByUrl('/login');
   }
 
 }

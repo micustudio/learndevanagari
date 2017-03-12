@@ -1,0 +1,19 @@
+.form-box {
+    max-width: 470px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 60px;
+    border-radius: 2px
+}
+
+.form-control {
+    border-radius: 2px;
+}
+
+button {
+    border-radius: 2px;
+}
+
+h1 {
+    margin-bottom: 12px;
+}

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Routing } from "./app.routing";
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +38,8 @@ import { StudyComponent } from './study/study.component';
     HttpModule,
     Routing,
     ItemModule,
-    UserModule
+    UserModule,
+    ReactiveFormsModule
   ],
   providers: [
         AdminService,

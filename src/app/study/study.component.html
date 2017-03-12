@@ -1,3 +1,22 @@
-<p>
-  study works!
-</p>
+<div class="jumbotron">
+    <div class="container">
+        <div class="form-box">
+            <div *ngIf="foundData" class="form-box">
+                <p>{{this.user.items[1].char}}</p>
+            </div>
+            <form [formGroup]="myForm" (ngSubmit)="onCheck()">
+                <div class="form-group">
+                    <input
+                        type="text"
+                        id="check"
+                        class="form-control"
+                        formControlName="check">
+                </div>
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                    [disabled]="!myForm.valid">Check!</button>
+                </form>
+            </div>
+    </div>
+</div>

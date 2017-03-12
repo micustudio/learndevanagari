@@ -12,6 +12,29 @@ router.get('/', (req, res) => {
   res.send('user works');
 });
 
+router.get('/:id', (req, res) => {
+        User.findById(req.params.id).populate('items', 'items')
+        .exec(function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: 'Login Failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
+        res.status(200).json({
+            message: 'Successfully found User!',
+            user: user
+        })
+    });
+  
+});
+
 router.post('/signin', function(req, res, next) {
     User.findOne({email: req.body.email}).populate('items', 'items')
         .exec(function(err, user) {
@@ -45,7 +68,7 @@ router.post('/signin', function(req, res, next) {
         res.status(200).json({
             message: 'Successfully logged in!',
             token: token,
-            userId: user._id
+            userID: user._id
         })
     });
 });

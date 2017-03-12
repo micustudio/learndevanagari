@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { User } from '../user.model';
@@ -23,7 +23,22 @@ export class SigninComponent implements OnInit {
                 data => {
                     console.log("The data form the signin component is coming back as...");
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('userId', data.userId);
+                    localStorage.setItem('userID', data.userID);
+                    console.log("The user ID is");
+                    console.log(data.userID);
+                    /*let user = new User(
+                                data.user.username,
+                                data.user.email,
+                                data.user.password,
+                                data.user.fullName,
+                                data.user.profilePic,
+                                data.user.location,
+                                data.user.biography,
+                                data.user.date,
+                                data.user.items);
+                    console.log("The  user is...........");
+                    console.log(user);*/
+                    this.userService.emitUserID(data.userID);
                     this.router.navigateByUrl('/study');
                 },
                 error => console.error(error)
