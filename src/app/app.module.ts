@@ -20,6 +20,7 @@ import { AuthGuard } from './auth-guard.service';
 import { ItemModule } from "./item-module/item.module";
 import { UserModule } from "./user-module/user.module";
 import { StudyComponent } from './study/study.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { StudyComponent } from './study/study.component';
     AboutComponent,
     ContactComponent,
     AdminComponent,
-    StudyComponent
+    StudyComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

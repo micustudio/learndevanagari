@@ -7,6 +7,9 @@ import { SignupComponent } from './user-module/signup/signup.component';
 import { SigninComponent } from './user-module/signin/signin.component';
 import { StudyComponent } from './study/study.component';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
 
 import { AuthGuard } from './auth-guard.service';
 
@@ -18,6 +21,7 @@ const APP_ROUTES: Routes = [
     { path: 'admin', component: AdminComponent, loadChildren: './admin-module/admin.module#AdminModule' },
     { path: 'signup', component: SignupComponent},
     { path: 'login', component: SigninComponent},
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'study', component: StudyComponent, canActivate: [AuthGuard]}
 ];
 

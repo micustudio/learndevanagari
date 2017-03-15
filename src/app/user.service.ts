@@ -9,7 +9,7 @@ import { User } from './user-module/user.model';
 @Injectable()
 export class UserService {
   user: User;
-  signedUserID = new EventEmitter<string>();
+  signedUser = new EventEmitter<User>();
 
   constructor(private http: Http) { }
 
@@ -48,9 +48,16 @@ export class UserService {
         return localStorage.getItem('token') !== null;
     }
 
-    emitUserID(userID: string){
-        this.signedUserID.emit(userID);
+    emitUser(user: User){
+        this.user = user;
+        this.signedUser.emit(user);
         console.log("The emit user from the user service end!");
+        console.log("The emitted user is");
+        console.log(user);
+    }
+
+    fetchStoredUser(){
+        return this.user;
     }
 
     getUser(userID: string) {

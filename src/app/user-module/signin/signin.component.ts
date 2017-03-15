@@ -23,10 +23,10 @@ export class SigninComponent implements OnInit {
                 data => {
                     console.log("The data form the signin component is coming back as...");
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('userID', data.userID);
+                    localStorage.setItem('userId', data.user._id);
                     console.log("The user ID is");
-                    console.log(data.userID);
-                    /*let user = new User(
+                    console.log(data.user._id);
+                    let user = new User(
                                 data.user.username,
                                 data.user.email,
                                 data.user.password,
@@ -37,8 +37,8 @@ export class SigninComponent implements OnInit {
                                 data.user.date,
                                 data.user.items);
                     console.log("The  user is...........");
-                    console.log(user);*/
-                    this.userService.emitUserID(data.userID);
+                    console.log(user);
+                    this.userService.emitUser(user);
                     this.router.navigateByUrl('/study');
                 },
                 error => console.error(error)
