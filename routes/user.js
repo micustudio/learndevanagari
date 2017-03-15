@@ -12,8 +12,11 @@ router.get('/', (req, res) => {
   res.send('user works');
 });
 
-router.get('/:id', (req, res) => {
-        User.findById(req.params.id).populate('items', 'items')
+router.get('/signeduser', (req, res) => {
+    var decoded = jwt.decode(req.query.token);
+    console.log("The decoded message is...");
+    console.log(decoded);
+        User.findById(decoded.user._id).populate('items', 'items')
         .exec(function(err, user) {
         if (err) {
             return res.status(500).json({

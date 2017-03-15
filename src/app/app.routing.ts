@@ -22,7 +22,8 @@ const APP_ROUTES: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'login', component: SigninComponent},
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-    { path: 'study', component: StudyComponent, canActivate: [AuthGuard]}
+    { path: 'study', component: StudyComponent, canActivate: [AuthGuard]},
+    { path: '**', component: StudyComponent, canActivate: [AuthGuard]}
 ];
 
 export const Routing = RouterModule.forRoot(APP_ROUTES);

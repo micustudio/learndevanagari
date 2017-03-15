@@ -9,7 +9,7 @@ import { User } from './user-module/user.model';
 @Injectable()
 export class UserService {
   user: User;
-  signedUser = new EventEmitter<User>();
+  /*signedUser = new EventEmitter<User>();*/
 
   constructor(private http: Http) { }
 
@@ -48,7 +48,7 @@ export class UserService {
         return localStorage.getItem('token') !== null;
     }
 
-    emitUser(user: User){
+    /*emitUser(user: User){
         this.user = user;
         this.signedUser.emit(user);
         console.log("The emit user from the user service end!");
@@ -58,11 +58,14 @@ export class UserService {
 
     fetchStoredUser(){
         return this.user;
-    }
+    }*/
 
-    getUser(userID: string) {
+    getUser() {
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.get(domain + 'user/' + userID)
+    const token = localStorage.getItem('token') 
+                    ? '?token=' + localStorage.getItem('token')
+                    : '';
+    return this.http.get(domain + 'user/signeduser' + token)
                 .map((response: Response) => {
                     const result = response.json();
                     console.log("The result from the GETUSER method from service is: ");

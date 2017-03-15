@@ -16,3 +16,11 @@ button {
     border-radius: 2px;
     cursor: pointer;
 }
+
+.character {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12em;
+    color: #2ecc71;
+    display: block;
+    margin: 0 auto;
+}
