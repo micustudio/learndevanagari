@@ -1,6 +1,6 @@
 .form-box {
     max-width: 470px;
-    margin: auto;
+    margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 10px 60px;
     border-radius: 2px
@@ -15,6 +15,9 @@
 button {
     border-radius: 2px;
     cursor: pointer;
+    height: 43px;
+    margin-left: 2px;
+    padding: 0px 18px;
 }
 
 .character {
@@ -22,5 +25,29 @@ button {
     font-size: 12em;
     color: #2ecc71;
     display: block;
-    margin: 0 auto;
+    margin-left: 20%;
 }
+
+.two-way-height {
+    height: 16px;
+}
+
+.two-way{
+    text-align: center;
+    vertical-align: text-top;
+    font-weight: bold;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+    /*.form-group {
+        display: inline;
+        float:left;
+    }
+
+    .next-to-text-input {
+        display: inline;
+    }*/
+    .form-group {
+        float:left;
+    }

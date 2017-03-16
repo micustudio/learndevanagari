@@ -2,7 +2,10 @@
     <div class="container">
         <div class="form-box">
             <div class="form-box">
-                <p class="character">{{ character }}</p>
+                <p class="character" [@visibilityChanged]="newItem">{{ character }}</p>
+                <div class="two-way-height">
+                    <p class="two-way">{{ check }}</p>
+                </div>
             </div>
             <form [formGroup]="myForm" (ngSubmit)="onCheck()">
                 <div class="form-group">
@@ -10,10 +13,11 @@
                         type="text"
                         id="check"
                         class="form-control"
-                        formControlName="check">
+                        formControlName="check"
+                        [(ngModel)]="check">
                 </div>
                 <button
-                    class="btn btn-primary"
+                    class="btn btn-primary next-to-text-input"
                     type="submit"
                     [disabled]="!myForm.valid">Check!</button>
                 </form>

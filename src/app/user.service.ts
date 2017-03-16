@@ -4,7 +4,7 @@ import 'rxjs/Rx';
 import { Observable } from "rxjs";
 import { domain } from './app.domain';
 import { User } from './user-module/user.model';
-
+import { Item } from './item-module/item.model';
 
 @Injectable()
 export class UserService {
@@ -38,6 +38,24 @@ export class UserService {
                     return result;
                 })
                 .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+
+    updateItem(item: Item){
+        const body = JSON.stringify(item);
+        console.log("The stringified json body is");
+        console.log(body);
+        const token = localStorage.getItem('token') 
+                    ? '?token=' + localStorage.getItem('token')
+                    : '';
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.patch(domain + 'user/updateitem' + token, body, {headers: headers})
+                .map((response: Response) => {
+                    const result = response.json();
+                    return result;
+                })
+                .catch((error: Response) => Observable.throw(error.json()));
+            
     }
 
     logout() {

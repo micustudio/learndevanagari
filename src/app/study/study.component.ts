@@ -11,19 +11,28 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-study',
   templateUrl: './study.component.html',
-  styleUrls: ['./study.component.css']
+  styleUrls: ['./study.component.css'],
+      animations: [
+    trigger('visibilityChanged', [
+      state('true' , style({ opacity: 1 })),
+      state('false', style({ opacity: 0 })),
+      transition('0 => 1', animate('0.1s 100ms ease-out')),
+      transition('1 => 0', animate('0.1s 100ms ease-in'))
+    ])
+  ]
 })
 export class StudyComponent implements OnInit /*, AfterContentInit */{
+  newItem: boolean = false;
   myForm: FormGroup;
   user: User;
   items: Item[];
   rand: number;
   max: number;
   character: string;
-  saved: [{
+  history: [{
       savedChar: string,
       correct: boolean
-  }]
+  }] = null;
 
   constructor(private userService: UserService) { }
 
@@ -47,6 +56,7 @@ export class StudyComponent implements OnInit /*, AfterContentInit */{
                     this.max = this.user.items.length;
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
+                    this.newItem = true;
                     // console.log(this.character);
                     // console.log(this.user.items.length);
                     // for(let i = 0; i < this.user.items.length; i++){
@@ -77,9 +87,25 @@ export class StudyComponent implements OnInit /*, AfterContentInit */{
   } */
 
   onCheck(){
+    this.newItem = false;
+    this.myForm.setValue({
+      check: null
+    });
     console.log("BAKAW!!!");
+    //function to calculate next item
     this.rand = this.getRandomIntInclusive(0, this.max);
+    setTimeout(() => { 
     this.character = this.user.items[this.rand].char;
+    console.log("The item being sent off is....");
+    console.log(this.user.items[this.rand]);
+    this.userService.updateItem(this.user.items[this.rand]).subscribe(                
+                data => {
+                    console.log("THE DATA coming back IS...");
+                    console.log(data);
+                    this.newItem = true;
+                },
+                error => console.error(error));
+        }, 500);
   }
 
   getRandomIntInclusive(min, max) {
