@@ -1,5 +1,5 @@
 const local: string = 'http://localhost:3000/';
-const prod: string = 'https://intense-plains-43467.herokuapp.com/'
+const prod: string = 'https://learndev.herokuapp.com/'
 
 export let domain: string = prod;
 
