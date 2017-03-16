@@ -16,7 +16,7 @@ router.get('/signeduser', (req, res) => {
     var decoded = jwt.decode(req.query.token);
     console.log("The decoded message is...");
     console.log(decoded);
-        User.findById(decoded.user._id).populate('items', 'items')
+        User.findById(decoded.userId).populate('items', 'items')
         .exec(function(err, user) {
         if (err) {
             return res.status(500).json({
@@ -41,7 +41,7 @@ router.patch('/updateitem', (req, res) => {
     var decoded = jwt.decode(req.query.token);
     console.log("The decoded message is...");
     console.log(decoded);
-        User.findById(decoded.user._id).populate('items', 'items')
+        User.findById(decoded.userId).populate('items', 'items')
         .exec(function(err, user) {
         if (err) {
             return res.status(500).json({
@@ -105,14 +105,13 @@ router.post('/signin', function(req, res, next) {
         console.log(user);
         console.log("The item details are:");
         console.log(user.items);
-        let token = jwt.sign({user: user}, 'secretMyKeyUserApp', {expiresIn: 7200});
+        let token = jwt.sign({userId: user._id}, 'secretMyKeyUserApp', {expiresIn: 7200});
         console.log("The token is...");
         console.log(token);
         res.status(200).json({
             message: 'Successfully logged in!',
             token: token,
-            // userID: user._id
-            user: user
+            userId: user._id
         })
     });
 });
