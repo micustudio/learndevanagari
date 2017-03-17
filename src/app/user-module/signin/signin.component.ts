@@ -1,16 +1,27 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, AfterContentInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
 import { User } from '../user.model';
 
+import { trigger, state, style, transition, animate, keyframes } from '@angular/core';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
+  animations: [
+    trigger('successfulSignIn', [
+      state('true' , style({ opacity: 1 })),
+      state('false', style({ opacity: 0 })),
+      transition('0 => 1', animate('0.1s 100ms')),
+      transition('1 => 0', animate('0.1s 100ms'))
+    ])
+  ]
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, AfterContentInit {
   myForm: FormGroup;
+  signedUp: boolean = false;
 
   constructor(private userService: UserService,
               private router: Router) { }
@@ -59,4 +70,13 @@ export class SigninComponent implements OnInit {
     signup() {
       this.router.navigateByUrl('/signup');
   }
+
+    ngAfterContentInit(){
+      if(this.userService.signedUpSuccessful()){
+          this.signedUp = this.userService.signedUpSuccessful();
+          console.log("WHOA THIS IS A SUCCESSFUL SIGN UP!!!");
+          console.log("LETS DISPLAY A MESSAGE!!");
+      }
+  }
+
 }

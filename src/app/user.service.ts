@@ -9,9 +9,17 @@ import { Item } from './item-module/item.model';
 @Injectable()
 export class UserService {
   user: User;
+  signedUpSign: boolean = false;
   /*signedUser = new EventEmitter<User>();*/
 
   constructor(private http: Http) { }
+
+    signedUpMessage(){
+        this.signedUpSign = true;
+    }
+    signedUpSuccessful(){
+        return this.signedUpSign;
+    }
 
     signup(user: User){
         const body = JSON.stringify(user);
