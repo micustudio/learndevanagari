@@ -79,7 +79,7 @@ router.patch('/updateitem', (req, res) => {
 
 
 router.post('/signin', function(req, res, next) {
-    User.findOne({email: req.body.email}).populate('items', 'items')
+    User.findOne({email: { "$regex": req.body.email, "$options": "i" }}).populate('items', 'items')
         .exec(function(err, user) {
         
         if (err) {
