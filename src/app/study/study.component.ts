@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UserService } from '../user.service';
 import { User } from '../user-module/user.model';
@@ -21,7 +21,8 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class StudyComponent implements OnInit /*, AfterContentInit */{
+export class StudyComponent implements OnInit, AfterViewInit {
+  @ViewChildren('input') vc;
   newItem: boolean = false;
   myForm: FormGroup;
   user: User;
@@ -70,6 +71,10 @@ export class StudyComponent implements OnInit /*, AfterContentInit */{
         this.myForm = new FormGroup({
             check: new FormControl(null, Validators.required)
         });
+  }
+
+  ngAfterViewInit() {
+      this.vc.first.nativeElement.focus();
   }
 
   /*ngAfterContentInit() {

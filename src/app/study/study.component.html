@@ -9,7 +9,8 @@
             </div>
             <form [formGroup]="myForm" (ngSubmit)="onCheck()">
                 <div class="form-group">
-                    <input
+                    <input 
+                        #input 
                         type="text"
                         id="check"
                         class="form-control"
