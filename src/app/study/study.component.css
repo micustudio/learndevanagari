@@ -1,3 +1,45 @@
+.history-bar {
+    background-color: #27ae60;
+    height: 62px;
+    width: 3000px;
+    padding: 2px;
+    position: relative;
+}
+
+.history-text {
+    color:rgba(236, 240, 241, 0.7);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px 8px;
+    float: left;
+}
+
+.history-block {
+    float: left;
+    background-color: #ecf0f1;
+    border-radius: 2px;
+    margin: 6px 4px;
+    cursor: pointer;
+}
+
+.history {
+    font-size: 2em;
+    width: 4vw;
+    color: #2ecc71;
+}
+
+.history-meta {
+   font-size: 1em;   
+}
+
+.jumbotron {
+    padding-top: 16px;
+}
+
+td {
+    padding: 0 10px;
+}
+
 .form-box {
     max-width: 470px;
     margin: 0 auto;
@@ -51,3 +93,14 @@ button {
     .form-group {
         float:left;
     }
+
+.new-char {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFEB3B;
+}
+
+.fa-star {
+    color: #FFEB3B;
+}

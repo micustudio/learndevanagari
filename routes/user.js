@@ -56,24 +56,40 @@ router.patch('/updateitem', (req, res) => {
             });
         }
         console.log("The REQUEST.BODY (WHICH IS AN ITEM IS....)");
+        console.log(req.body);
         console.log("hello");
 
-      /*item.category = req.body.category; 
-      item.subCategory = req.body.subCategory; 
-      item.tags = req.body.tags;
-      item.editorial = req.body.editorial;
-      item.save(function(err, result){
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred',
-                error: err
+        for(i = 0; i < user.items.length; i++){
+            console.log("The user char is ");
+            console.log(user.items[i].char);
+            console.log("THE REQ char is ");
+            console.log(req.body.char);
+            if(user.items[i].char == req.body.char){
+                console.log("WE FOUND A MATCH!!");
+
+                user.items[i].correct = req.body.correct;
+                user.items[i].incorrect = req.body.incorrect;
+                user.items[i].streak = req.body.streak;
+                user.items[i].highestStreak = req.body.highestStreak;
+                user.items[i].rank = req.body.rank;
+                user.items[i].unseen = req.body.unseen;
+                user.items[i].impressions = req.body.impressions;
+            }
+        }
+
+            user.save(function(err, result){
+                    if (err) {
+                        return res.status(500).json({
+                            title: 'An error occurred',
+                            error: err
+                        });
+                    }
+                    res.status(200).json({
+                        message: 'Successfully found User!',
+                        user: user
+                    });
             });
 
-        } */
-        res.status(200).json({
-            message: 'Successfully found User!',
-            user: user
-        })
       });
 });
 
@@ -142,6 +158,7 @@ router.post('/', function(req, res, next) {
                     correct: 0,
                     incorrect: 0,
                     streak: 0,
+                    highestStreak: 0,
                     rank: 0,
                     unseen: true,
                     impressions: 0

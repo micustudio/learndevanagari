@@ -23,19 +23,86 @@ import { Router } from '@angular/router';
 })
 export class StudyComponent implements OnInit, AfterViewInit {
   @ViewChildren('input') vc;
-  newItem: boolean = false;
+  nextNewItem: boolean = false;
+  newHistory: boolean = false;
   myForm: FormGroup;
   user: User;
   items: Item[];
   rand: number;
   max: number;
   character: string;
-  history: [{
-      savedChar: string,
-      correct: boolean
-  }] = null;
+  correct: boolean;
+  unseen: boolean;
+  histories = [];
 
   constructor(private userService: UserService) { }
+
+  onCheck(){
+    this.newHistory = false;
+    this.nextNewItem = false;
+    // If the item is seen for the first time.
+    this.user.items[this.rand].impressions++;
+    this.user.items[this.rand].unseen = false;
+    // If the item is Correct
+    if(this.user.items[this.rand].letter == this.myForm.value.check){
+        this.correct = true;
+        this.user.items[this.rand].correct++;
+        if(this.user.items[this.rand].streak > 1)
+            this.user.items[this.rand].rank += 2;
+        else
+            this.user.items[this.rand].rank++;
+        this.user.items[this.rand].streak++;
+        if (this.user.items[this.rand].streak > this.user.items[this.rand].highestStreak)
+            this.user.items[this.rand].highestStreak = this.user.items[this.rand].streak;
+    }
+    // If the item is Incorrect
+    else{
+        this.correct = false;
+        this.user.items[this.rand].incorrect++;
+        this.user.items[this.rand].streak = 0;
+        this.user.items[this.rand].rank--;
+        if(this.user.items[this.rand].rank < 0)
+            this.user.items[this.rand].rank = 0;
+        }
+
+    let history = {
+            savedChar: this.user.items[this.rand].char,
+            letter: this.user.items[this.rand].letter,
+            correct: this.correct
+    };
+    this.histories.unshift(history);
+    this.newHistory = true;
+
+    console.log("the histories array is...");
+    console.log(this.histories);
+
+
+    this.myForm.setValue({
+      check: null
+    });
+
+    // Function to calculate next item
+    setTimeout(() => { 
+    console.log("The item being sent off is....");
+    console.log(this.user.items[this.rand]);
+    this.userService.updateItem(this.user.items[this.rand]).subscribe(                
+                data => {
+                    console.log("THE DATA coming back IS...");
+                    console.log(data);
+                    this.nextNewItem = true;
+                    this.newHistory = true;
+                    this.rand = this.getRandomIntInclusive(0, this.max);
+                    this.character = this.user.items[this.rand].char;
+                },
+                error => console.error(error));
+        }, 500);
+  }
+
+  getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
   ngOnInit(){
         this.userService.getUser().subscribe(
@@ -57,7 +124,8 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     this.max = this.user.items.length;
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
-                    this.newItem = true;
+                    this.unseen = this.user.items[this.rand].unseen;
+                    this.nextNewItem = true;
                     // console.log(this.character);
                     // console.log(this.user.items.length);
                     // for(let i = 0; i < this.user.items.length; i++){
@@ -77,46 +145,14 @@ export class StudyComponent implements OnInit, AfterViewInit {
       this.vc.first.nativeElement.focus();
   }
 
-  /*ngAfterContentInit() {
-        this.myForm = new FormGroup({
-            check: new FormControl(null, Validators.required)
-        });
-        this.user = this.userService.fetchStoredUser();
-        console.log("The user for study component issssss");
-
-        if(this.user){
-        console.log(this.user);
-        console.log(this.user.items);
-        this.character = this.user.items[0].char;
-        
-  } */
-
-  onCheck(){
-    this.newItem = false;
-    this.myForm.setValue({
-      check: null
-    });
-    console.log("BAKAW!!!");
-    //function to calculate next item
-    this.rand = this.getRandomIntInclusive(0, this.max);
-    setTimeout(() => { 
-    this.character = this.user.items[this.rand].char;
-    console.log("The item being sent off is....");
-    console.log(this.user.items[this.rand]);
-    this.userService.updateItem(this.user.items[this.rand]).subscribe(                
-                data => {
-                    console.log("THE DATA coming back IS...");
-                    console.log(data);
-                    this.newItem = true;
-                },
-                error => console.error(error));
-        }, 500);
+  correctColor(right: boolean){
+      let hexString;
+      if(right == true)
+        hexString = '#2ecc71';
+      else 
+        hexString = '#e74c3c';
+      return hexString;
   }
 
-  getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 }
