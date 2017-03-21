@@ -123,12 +123,12 @@ export class UserService {
     const token = localStorage.getItem('token') 
                     ? '?token=' + localStorage.getItem('token')
                     : '';
-    return this.http.get(domain + 'user/gravatar' + token)
+    return this.http.post(domain + 'user/gravatar' + token, body, {headers: headers})
                 .map((response: Response) => {
                     const result = response.json();
                     console.log("The result from the GETGRAVATAR method from service is: ");
                     console.log(result)
-                    let url = result.gravatarUrl.substring(2);
+                    let url = result.gravatarUrl;
                     return url;
                 })
                 .catch((error: Response) => Observable.throw(error.json()));

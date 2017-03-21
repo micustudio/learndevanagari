@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const gravatar = require('gravatar');
+//const gravatar = require('gravatar');
+const gravatar = require('gravatar-api');
 
 
 const Item = require('../models/item');
@@ -13,13 +14,25 @@ router.get('/', (req, res) => {
   res.send('user works');
 });
 
-router.get('/gravatar', (req, res) => {
-    const url = gravatar.url('req.body.email', {s: '100'});
-    console.log("the url rertreived is...");
-    console.log(url);
+router.post('/gravatar', (req, res) => {
+    console.log("THE EMAIL INTHEROUTEZIS..");
+    console.log(req.body.email);
+    //const url = gravatar.url('req.body.email', {protocol: 'https', s: '100'});
+
+        let options = {
+            email: req.body.email,
+            parameters: { "size": "100" }
+        }
+
+    let avatar = gravatar.imageUrl(options);
+
+    console.log("the avatar rertreived is...");
+    console.log(avatar);
+
+
         res.status(200).json({
             message: 'Successfully found url!',
-            gravatarUrl: url
+            gravatarUrl: avatar
         })
 });
 

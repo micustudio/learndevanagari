@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
                this.userService.getGravatar(this.user.email).subscribe(
                  (url: string) => {
                    console.log("The GG URL is..." + url);
-                   this.gravatarUrl = `https://${url}`;
+                   this.gravatarUrl = url;
                    this.userDetails = true;
                });
                
