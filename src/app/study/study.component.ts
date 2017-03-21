@@ -23,10 +23,10 @@ import { Router } from '@angular/router';
 })
 export class StudyComponent implements OnInit, AfterViewInit {
   @ViewChildren('input') vc;
+  user: User;
   nextNewItem: boolean = false;
   newHistory: boolean = false;
   myForm: FormGroup;
-  user: User;
   items: Item[];
   rand: number;
   max: number;
@@ -120,6 +120,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     console.log("The  user ON INIT IS.....");
                     console.log(user);
                     this.user = user;
+                    this.userService.setUser(this.user);
                     this.items = user.items;
                     this.max = this.user.items.length;
                     this.rand = this.getRandomIntInclusive(0, this.max);

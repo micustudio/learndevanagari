@@ -1,3 +1,13 @@
 .navbar-brand{
 
 }
+
+.gravatar {
+    margin-top: -2px;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    border: #2980b9 1px solid;
+    cursor: pointer;
+
+}

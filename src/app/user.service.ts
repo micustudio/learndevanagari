@@ -10,7 +10,7 @@ import { Item } from './item-module/item.model';
 export class UserService {
   user: User;
   signedUpSign: boolean = false;
-  /*signedUser = new EventEmitter<User>();*/
+  signedUser = new EventEmitter<User>();
 
   constructor(private http: Http) { }
 
@@ -74,7 +74,7 @@ export class UserService {
         return localStorage.getItem('token') !== null;
     }
 
-    /*emitUser(user: User){
+    setUser(user: User){
         this.user = user;
         this.signedUser.emit(user);
         console.log("The emit user from the user service end!");
@@ -82,7 +82,7 @@ export class UserService {
         console.log(user);
     }
 
-    fetchStoredUser(){
+    /*fetchStoredUser(){
         return this.user;
     }*/
 
@@ -109,6 +109,27 @@ export class UserService {
                     console.log("tHE NEW FREAKING USER IS...");
                     console.log(user);
                     return user;
+                })
+                .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+
+
+    getGravatar(email: string) {
+    const emailObj = { email: email };
+    const body = JSON.stringify(emailObj);
+    console.log(body);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const token = localStorage.getItem('token') 
+                    ? '?token=' + localStorage.getItem('token')
+                    : '';
+    return this.http.get(domain + 'user/gravatar' + token)
+                .map((response: Response) => {
+                    const result = response.json();
+                    console.log("The result from the GETGRAVATAR method from service is: ");
+                    console.log(result)
+                    let url = result.gravatarUrl.substring(2);
+                    return url;
                 })
                 .catch((error: Response) => Observable.throw(error.json()));
     }

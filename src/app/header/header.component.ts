@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { User } from '../user-module/user.model';
 
 import { Router } from '@angular/router';
 
@@ -9,11 +10,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  user: User;
+  userDetails: boolean = false;
+  gravatarUrl: string;
 
   constructor(private router: Router,
               private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.signedUser.subscribe(
+             (user: User) => { 
+               this.user = user;
+               console.log(this.user);
+               this.userService.getGravatar(this.user.email).subscribe(
+                 (url: string) => {
+                   console.log("The GG URL is..." + url);
+                   this.gravatarUrl = `https://${url}`;
+                   this.userDetails = true;
+               });
+               
+
+          });
   }
   
   isLoggedIn() {
