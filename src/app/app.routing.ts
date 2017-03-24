@@ -9,6 +9,8 @@ import { StudyComponent } from './study/study.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LearnComponent } from './learn/learn.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 
@@ -22,9 +24,11 @@ const APP_ROUTES: Routes = [
     { path: 'admin', component: AdminComponent, loadChildren: './admin-module/admin.module#AdminModule' },
     { path: 'signup', component: SignupComponent},
     { path: 'login', component: SigninComponent},
-    { path: 'profile', component: ProfileComponent},
+    { path: 'profile/:id', component: ProfileComponent},
+    { path: 'leaderboard', component: LeaderboardComponent},
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'study', component: StudyComponent, canActivate: [AuthGuard]},
+    { path: 'learn', component: LearnComponent, canActivate: [AuthGuard]},
     { path: '**', component: StudyComponent, canActivate: [AuthGuard]}
 ];
 

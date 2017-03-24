@@ -21,7 +21,7 @@ router.post('/gravatar', (req, res) => {
 
         let options = {
             email: req.body.email,
-            parameters: { "size": "100" }
+            parameters: { "size": "200" }
         }
 
     let avatar = gravatar.imageUrl(options);
@@ -80,25 +80,24 @@ router.patch('/updateitem', (req, res) => {
                 error: {message: 'Invalid login credentials'}
             });
         }
-        console.log("The REQUEST.BODY (WHICH IS AN ITEM IS....)");
+        console.log("The REQUEST.BODY (WHICH IS AN UUUUUSER IS....)");
         console.log(req.body);
         console.log("hello");
-
+        user.level = req.body.level;
         for(i = 0; i < user.items.length; i++){
             console.log("The user char is ");
             console.log(user.items[i].char);
             console.log("THE REQ char is ");
-            console.log(req.body.char);
-            if(user.items[i].char == req.body.char){
+            //console.log(req.body.char);
+            if(user.items[i].char == req.body.items[i].char){
                 console.log("WE FOUND A MATCH!!");
-
-                user.items[i].correct = req.body.correct;
-                user.items[i].incorrect = req.body.incorrect;
-                user.items[i].streak = req.body.streak;
-                user.items[i].highestStreak = req.body.highestStreak;
-                user.items[i].rank = req.body.rank;
-                user.items[i].unseen = req.body.unseen;
-                user.items[i].impressions = req.body.impressions;
+                user.items[i].correct = req.body.items[i].correct;
+                user.items[i].incorrect = req.body.items[i].incorrect;
+                user.items[i].streak = req.body.items[i].streak;
+                user.items[i].highestStreak = req.body.items[i].highestStreak;
+                user.items[i].rank = req.body.items[i].rank;
+                user.items[i].unseen = req.body.items[i].unseen;
+                user.items[i].impressions = req.body.items[i].impressions;
             }
         }
 

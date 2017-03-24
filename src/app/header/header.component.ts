@@ -4,6 +4,7 @@ import { User } from '../user-module/user.model';
 
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   user: User;
   userDetails: boolean = false;
   gravatarUrl: string;
+  level: number;
 
   constructor(private router: Router,
               private userService: UserService) { }
@@ -26,6 +28,7 @@ export class HeaderComponent implements OnInit {
                  (url: string) => {
                    console.log("The GG URL is..." + url);
                    this.gravatarUrl = url;
+                   this.level = Math.floor(Math.sqrt(user.level));
                    this.userDetails = true;
                });
                

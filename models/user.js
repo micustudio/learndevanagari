@@ -12,6 +12,7 @@ let userSchema = new Schema({
     profilePic: {type: String},
     location: {type: String},
     biography: {type: String},
+    level: {type: Number, default: 0},
     date: {type: Date, default: Date.now },
     items: [Item.schema], // Item.Schema!!!!! :DDDDD that is the correct way for embedda data (vs. reference of object Id's')
     comments: [{type: Schema.Types.ObjectId, ref:'Comment'}]

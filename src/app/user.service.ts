@@ -49,8 +49,8 @@ export class UserService {
     }
 
 
-    updateItem(item: Item){
-        const body = JSON.stringify(item);
+    updateItem(user: User){
+        const body = JSON.stringify(user);
         console.log("The stringified json body is");
         console.log(body);
         const token = localStorage.getItem('token') 
@@ -104,8 +104,10 @@ export class UserService {
                                 result.user.profilePic,
                                 result.user.location,
                                 result.user.biography,
+                                result.user.level,
                                 result.user.date,
-                                result.user.items);
+                                result.user.items,
+                                result.user._id);
                     console.log("tHE NEW FREAKING USER IS...");
                     console.log(user);
                     return user;

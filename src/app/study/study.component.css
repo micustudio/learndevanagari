@@ -1,9 +1,10 @@
 .history-bar {
     background-color: #27ae60;
     height: 62px;
-    width: 3000px;
+    width: 100%;
     padding: 2px;
     position: relative;
+    overflow:hidden;
 }
 
 .history-text {

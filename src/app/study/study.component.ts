@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
     trigger('visibilityChanged', [
       state('true' , style({ opacity: 1 })),
       state('false', style({ opacity: 0 })),
-      transition('0 => 1', animate('0.1s 100ms ease-out')),
-      transition('1 => 0', animate('0.1s 100ms ease-in'))
+      transition('0 => 1', animate('0.1s 60ms ease-out')),
+      transition('1 => 0', animate('0.1s 60ms ease-in'))
     ])
   ]
 })
@@ -47,13 +47,18 @@ export class StudyComponent implements OnInit, AfterViewInit {
     if(this.user.items[this.rand].letter == this.myForm.value.check){
         this.correct = true;
         this.user.items[this.rand].correct++;
-        if(this.user.items[this.rand].streak > 1)
-            this.user.items[this.rand].rank += 2;
-        else
-            this.user.items[this.rand].rank++;
         this.user.items[this.rand].streak++;
-        if (this.user.items[this.rand].streak > this.user.items[this.rand].highestStreak)
+        if(this.user.items[this.rand].streak > 2){
+            this.user.items[this.rand].rank += 2;
+            this.user.level += 2;
+        }
+        else{
+            this.user.items[this.rand].rank++;
+            this.user.level++;
+        }
+        if (this.user.items[this.rand].streak > this.user.items[this.rand].highestStreak){
             this.user.items[this.rand].highestStreak = this.user.items[this.rand].streak;
+        }
     }
     // If the item is Incorrect
     else{
@@ -61,9 +66,10 @@ export class StudyComponent implements OnInit, AfterViewInit {
         this.user.items[this.rand].incorrect++;
         this.user.items[this.rand].streak = 0;
         this.user.items[this.rand].rank--;
-        if(this.user.items[this.rand].rank < 0)
+        if(this.user.items[this.rand].rank < 0){
             this.user.items[this.rand].rank = 0;
         }
+    }
 
     let history = {
             savedChar: this.user.items[this.rand].char,
@@ -81,11 +87,13 @@ export class StudyComponent implements OnInit, AfterViewInit {
       check: null
     });
 
+    this.userService.setUser(this.user);
+
     // Function to calculate next item
     setTimeout(() => { 
     console.log("The item being sent off is....");
     console.log(this.user.items[this.rand]);
-    this.userService.updateItem(this.user.items[this.rand]).subscribe(                
+    this.userService.updateItem(this.user).subscribe(                
                 data => {
                     console.log("THE DATA coming back IS...");
                     console.log(data);
@@ -107,6 +115,8 @@ export class StudyComponent implements OnInit, AfterViewInit {
   ngOnInit(){
         this.userService.getUser().subscribe(
                 data => {
+                    console.log("The data is...");
+                    console.log(data);
                     let user = new User(
                                 data.username,
                                 data.email,
@@ -115,8 +125,10 @@ export class StudyComponent implements OnInit, AfterViewInit {
                                 data.profilePic,
                                 data.location,
                                 data.biography,
+                                data.level,
                                 data.date,
-                                data.items);
+                                data.items,
+                                data.userId);
                     console.log("The  user ON INIT IS.....");
                     console.log(user);
                     this.user = user;

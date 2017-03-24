@@ -1,6 +1,11 @@
-.img-fluid {
-    position: absolute;
-    top: 56px;
+.container-fluid {
+    height: 100vh;
+    background: url('https://source.unsplash.com/rmDKFRR1ruU/1600x900');
+    background-size: cover;
+}
+
+.jumbotron {
+    background: none;
 }
 
 h1 {

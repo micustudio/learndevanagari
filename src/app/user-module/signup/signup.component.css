@@ -1,6 +1,10 @@
-.img-fluid {
-    position: absolute;
-    top: 56px;
+.container-fluid {
+    height: 100vh;
+    background: url('https://source.unsplash.com/qHD5SJwj9gM/1600x900');
+    background-size: cover;
+}
+.container {
+    padding-top: 10vh;
 }
 
 .form-box {
