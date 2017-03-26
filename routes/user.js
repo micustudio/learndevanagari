@@ -6,9 +6,32 @@ const jwt = require('jsonwebtoken');
 //const gravatar = require('gravatar');
 const gravatar = require('gravatar-api');
 
-
-const Item = require('../models/item');
 // need it to add the new items
+const Item = require('../models/item');
+
+// Get User By Id
+router.get('/:id', (req, res) => {
+        User.findById(req.params.id).populate('items', 'items')
+        .exec(function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: 'Login Failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
+        res.status(200).json({
+            message: 'Successfully found User!',
+            user: user
+        })
+    });
+});
+
 
 router.get('/', (req, res) => {
   res.send('user works');
@@ -36,7 +59,7 @@ router.post('/gravatar', (req, res) => {
         })
 });
 
-
+// Get User after Sign In
 router.get('/signeduser', (req, res) => {
     var decoded = jwt.decode(req.query.token);
     console.log("The decoded message is...");
@@ -62,6 +85,8 @@ router.get('/signeduser', (req, res) => {
     });
 });
 
+
+// Update Item from User
 router.patch('/updateitem', (req, res) => {
     var decoded = jwt.decode(req.query.token);
     console.log("The decoded message is...");
@@ -117,7 +142,7 @@ router.patch('/updateitem', (req, res) => {
       });
 });
 
-
+// Authenticate a User after Succesful Signin
 router.post('/signin', function(req, res, next) {
     User.findOne({email: { "$regex": req.body.email, "$options": "i" }}).populate('items', 'items')
         .exec(function(err, user) {
@@ -156,6 +181,7 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
+// Create a New User 
 router.post('/', function(req, res, next) {
     console.log("HELLO!");
     console.log("THE REQ THAT CAME BACK IS");

@@ -12,7 +12,7 @@
                 <div class="pages" routerLinkActive="active" [routerLink]="['/learn']" *ngIf="isLoggedIn()">learn</div>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn()">
-                <a class="nav-link" *ngIf="userDetails" [routerLink]="['/profile']">Lvl.{{ level }} <img src="{{ gravatarUrl }}" alt="" class="gravatar" *ngIf="userDetails"> Welcome, {{ user.username }}!</a>
+                <a class="nav-link" *ngIf="userDetails" [routerLink]="['/profile', userId]">Lvl.{{ level }} <img src="{{ gravatarUrl }}" alt="" class="gravatar" *ngIf="userDetails"> Welcome, {{ user.username }}!</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLinkActive="active" [routerLink]="['/signup']" *ngIf="!isLoggedIn()">signup</a>

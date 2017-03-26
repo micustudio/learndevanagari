@@ -115,6 +115,36 @@ export class UserService {
                 .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    getUserById(id: string) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.get(domain + 'user/' + id)
+                .map((response: Response) => {
+                    const result = response.json();
+                    console.log("The result from the GETUSERbyID method from service is: ");
+                    console.log(result)
+                    let user = new User(
+                                result.user.username,
+                                result.user.email,
+                                result.user.password,
+                                result.user.fullName,
+                                result.user.profilePic,
+                                result.user.location,
+                                result.user.biography,
+                                result.user.level,
+                                result.user.date,
+                                result.user.items,
+                                result.user._id);
+                    console.log("tHE NEW FREAKING USER IS...");
+                    console.log(user);
+                    this.user = user;
+                    return this.user;
+                })
+                .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    returnUser() {
+        return this.user;
+    }
 
 
     getGravatar(email: string) {
