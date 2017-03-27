@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UserService } from '../user.service';
 import { User } from '../user-module/user.model';
 import { Item } from '../item-module/item.model';
-import { trigger, state, style, transition, animate, keyframes } from '@angular/core';
+
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';

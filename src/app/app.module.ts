@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 import { Routing } from "./app.routing";
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
@@ -49,7 +51,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     Routing,
     ItemModule,
     UserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
         AdminService,
