@@ -1,0 +1,42 @@
+
+@media (max-width: 575px) {
+    .container {
+        padding: 0px;
+    }
+
+    div.card {
+        padding: 20px;
+    }
+
+    .edit-profile {
+        display: block;
+    }
+
+}
+
+
+.card {
+    margin: 30px;
+    padding: 20px 60px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.img-fluid {
+    float: right;
+    border-radius: 2px;
+}
+
+.meta-span {
+    display: inline;
+}
+
+.edit-profile {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+.logged-in {
+    display: inline;
+}

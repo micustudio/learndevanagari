@@ -1,10 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { Routing } from "./app.routing";
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -51,8 +49,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     Routing,
     ItemModule,
     UserModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
         AdminService,

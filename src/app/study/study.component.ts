@@ -4,23 +4,13 @@ import { UserService } from '../user.service';
 import { User } from '../user-module/user.model';
 import { Item } from '../item-module/item.model';
 
-import { trigger, state, style, transition, animate } from '@angular/animations';
-
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-study',
   templateUrl: './study.component.html',
-  styleUrls: ['./study.component.css'],
-      animations: [
-    trigger('visibilityChanged', [
-      state('true' , style({ opacity: 1 })),
-      state('false', style({ opacity: 0 })),
-      transition('0 => 1', animate('0.1s 60ms ease-out')),
-      transition('1 => 0', animate('0.1s 60ms ease-in'))
-    ])
-  ]
+  styleUrls: ['./study.component.css']
 })
 export class StudyComponent implements OnInit, AfterViewInit {
   @ViewChildren('input') vc;

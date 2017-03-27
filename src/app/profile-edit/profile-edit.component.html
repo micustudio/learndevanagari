@@ -1,3 +1,19 @@
-<p>
-  profile-edit works!
-</p>
+<div class="row">
+
+    <div class ="col-md-6">
+        <form (ngSubmit)="onPublish(f)" #f="ngForm">
+            <div class = "form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" 
+                    id="fullName" 
+                    class="form-control"
+                    [ngModel]="user?.fullName"
+                    name="fullName"
+                    required>
+            </div>
+            <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
+            <button class="btn btn-primary" type="submit" >Update</button>
+        </form>
+  
+  </div>
+</div>

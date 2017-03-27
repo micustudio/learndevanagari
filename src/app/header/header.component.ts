@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   gravatarUrl: string;
   level: number;
   userId: string;
+  userDetails: boolean = false;
 
   constructor(private userService: UserService,
               private router: Router) { }
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
                    console.log("The GG URL is..." + url);
                    this.gravatarUrl = url;
                    this.level = Math.floor(Math.sqrt(user.level));
+                   this.userDetails = true;
                });
                
 

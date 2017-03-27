@@ -9,30 +9,6 @@ const gravatar = require('gravatar-api');
 // need it to add the new items
 const Item = require('../models/item');
 
-// Get User By Id
-router.get('/:id', (req, res) => {
-        User.findById(req.params.id).populate('items', 'items')
-        .exec(function(err, user) {
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred',
-                error: err
-            });
-        }
-        if (!user) {
-            return res.status(401).json({
-                title: 'Login Failed',
-                error: {message: 'Invalid login credentials'}
-            });
-        }
-        res.status(200).json({
-            message: 'Successfully found User!',
-            user: user
-        })
-    });
-});
-
-
 router.get('/', (req, res) => {
   res.send('user works');
 });
@@ -85,6 +61,28 @@ router.get('/signeduser', (req, res) => {
     });
 });
 
+// Get User By Id
+router.get('/:id', (req, res) => {
+        User.findById(req.params.id).populate('items', 'items')
+        .exec(function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: 'Login Failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
+        res.status(200).json({
+            message: 'Successfully found User!',
+            user: user
+        })
+    });
+});
 
 // Update Item from User
 router.patch('/updateitem', (req, res) => {
@@ -108,6 +106,7 @@ router.patch('/updateitem', (req, res) => {
         console.log("The REQUEST.BODY (WHICH IS AN UUUUUSER IS....)");
         console.log(req.body);
         console.log("hello");
+        user.fullName = req.body.fullName;
         user.level = req.body.level;
         for(i = 0; i < user.items.length; i++){
             console.log("The user char is ");
@@ -134,7 +133,7 @@ router.patch('/updateitem', (req, res) => {
                         });
                     }
                     res.status(200).json({
-                        message: 'Successfully found User!',
+                        message: 'Successfully updated Item!',
                         user: user
                     });
             });

@@ -9,6 +9,7 @@ import { Item } from './item-module/item.model';
 @Injectable()
 export class UserService {
   user: User;
+  gravatarUrl: string;
   signedUpSign: boolean = false;
   signedUser = new EventEmitter<User>();
 
@@ -51,8 +52,6 @@ export class UserService {
 
     updateItem(user: User){
         const body = JSON.stringify(user);
-        console.log("The stringified json body is");
-        console.log(body);
         const token = localStorage.getItem('token') 
                     ? '?token=' + localStorage.getItem('token')
                     : '';
@@ -145,6 +144,9 @@ export class UserService {
     returnUser() {
         return this.user;
     }
+    returnGravatar() {
+        return this.gravatarUrl;
+    }
 
 
     getGravatar(email: string) {
@@ -160,8 +162,8 @@ export class UserService {
                     const result = response.json();
                     console.log("The result from the GETGRAVATAR method from service is: ");
                     console.log(result)
-                    let url = result.gravatarUrl;
-                    return url;
+                    this.gravatarUrl = result.gravatarUrl;
+                    return this.gravatarUrl;
                 })
                 .catch((error: Response) => Observable.throw(error.json()));
     }

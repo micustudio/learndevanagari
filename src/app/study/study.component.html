@@ -1,7 +1,7 @@
 <div class="history-bar">
     <p class="history-text">history</p>
     <div *ngFor="let history of histories">
-        <div class="history-block"[@visibilityChanged]="nextNewItem" >
+        <div class="history-block">
                 <table>
                     <tr>
                         <td class="history">{{ history.savedChar }}</td>
@@ -22,9 +22,9 @@
 </div>
 <div class="jumbotron">
         <div class="form-box">
-            <p class="new-char" *ngIf="unseen" [@visibilityChanged]="nextNewItem"><i class="fa fa-star" aria-hidden="true"></i> New Item!</p>
+            <p class="new-char" *ngIf="unseen"><i class="fa fa-star" aria-hidden="true"></i> New Item!</p>
             <div class="form-box">
-                <p class="character" [@visibilityChanged]="nextNewItem">{{ character }}</p>
+                <p class="character">{{ character }}</p>
                 <div class="two-way-height">
                     <p class="two-way">{{ check }}</p>
                 </div>
