@@ -1,0 +1,14 @@
+.row {
+    width: 100%;
+    background-color: indigo;
+    padding: 2px;
+}
+
+.card {
+    border-radius: 2px;
+    padding: 4px;
+}
+
+img {
+    display: inline-block;
+}

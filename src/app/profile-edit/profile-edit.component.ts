@@ -13,12 +13,15 @@ import { Router } from '@angular/router';
 export class ProfileEditComponent implements AfterViewInit {
 user: User;
 username: string;
+gravatarUrl: string;
 
   constructor(private userService: UserService,
               private route: Router) { }
 
   onPublish(form: NgForm){
         this.user.fullName          = form.value.fullName;
+        this.user.location          = form.value.location;
+        this.user.biography         = form.value.biography;
         this.userService.updateItem(this.user)
                 .subscribe(
                     result => {
@@ -30,9 +33,10 @@ username: string;
 
   ngAfterViewInit() {
     this.user = this.userService.returnUser();
+    this.gravatarUrl = this.userService.returnGravatar();
+    this.username = this.user.username;
     console.log("The user is from PROFILE EDIT");
     console.log(this.user);
-    this.username = this.user.username;
   }
 
 

@@ -1,3 +1,7 @@
-<p>
-  leaderboard works!
-</p>
+<div class="container">
+  <app-leaderboardinstance
+    *ngFor="let individualUser of users" 
+    [inputUser]="individualUser"
+    >
+  </app-leaderboardinstance>
+</div>

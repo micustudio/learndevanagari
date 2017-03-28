@@ -35,6 +35,25 @@ router.post('/gravatar', (req, res) => {
         })
 });
 
+router.get('/all', (req, res) => {
+    console.log("Hello this is from the get all users route");
+        User.find({})
+        .sort({'level': -1})
+        .limit(100)
+        .exec(function(err, users) {
+            if(err){
+                return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                users: users
+            });
+        });
+});
+
 // Get User after Sign In
 router.get('/signeduser', (req, res) => {
     var decoded = jwt.decode(req.query.token);
@@ -107,6 +126,8 @@ router.patch('/updateitem', (req, res) => {
         console.log(req.body);
         console.log("hello");
         user.fullName = req.body.fullName;
+        user.location = req.body.location;
+        user.biography = req.body.biography;
         user.level = req.body.level;
         for(i = 0; i < user.items.length; i++){
             console.log("The user char is ");

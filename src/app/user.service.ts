@@ -9,6 +9,7 @@ import { Item } from './item-module/item.model';
 @Injectable()
 export class UserService {
   user: User;
+  users: User[];
   gravatarUrl: string;
   signedUpSign: boolean = false;
   signedUser = new EventEmitter<User>();
@@ -84,6 +85,36 @@ export class UserService {
     /*fetchStoredUser(){
         return this.user;
     }*/
+
+    getUsers() {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.get(domain + 'user/all')
+                .map((response: Response) => {
+                    const result = response.json();
+                    this.users = result.users;
+                    /*
+                    console.log("The result from the GETUSERS method from service is: ");
+                    console.log(result)
+                    let user = new User(
+                                result.user.username,
+                                result.user.email,
+                                result.user.password,
+                                result.user.fullName,
+                                result.user.profilePic,
+                                result.user.location,
+                                result.user.biography,
+                                result.user.level,
+                                result.user.date,
+                                result.user.items,
+                                result.user._id);
+                    console.log("tHE NEW FREAKING USER IS...");
+                    console.log(user);
+                    return user; */
+                    return this.users;
+                })
+                .catch((error: Response) => Observable.throw(error.json()));
+    }
+
 
     getUser() {
     const headers = new Headers({'Content-Type': 'application/json'});

@@ -25,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LearnComponent } from './learn/learn.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { LeaderboardinstanceComponent } from './leaderboardinstance/leaderboardinstance.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     ProfileComponent,
     LearnComponent,
     ProfileEditComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    LeaderboardinstanceComponent
   ],
   imports: [
     BrowserModule,
