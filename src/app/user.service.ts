@@ -90,26 +90,28 @@ export class UserService {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.get(domain + 'user/all')
                 .map((response: Response) => {
+                    this.users = []
                     const result = response.json();
-                    this.users = result.users;
-                    /*
-                    console.log("The result from the GETUSERS method from service is: ");
-                    console.log(result)
-                    let user = new User(
-                                result.user.username,
-                                result.user.email,
-                                result.user.password,
-                                result.user.fullName,
-                                result.user.profilePic,
-                                result.user.location,
-                                result.user.biography,
-                                result.user.level,
-                                result.user.date,
-                                result.user.items,
-                                result.user._id);
-                    console.log("tHE NEW FREAKING USER IS...");
-                    console.log(user);
-                    return user; */
+                    console.log("THE GETUSERS RESULTS IS...");
+                    console.log(result);
+                    // this.users = result.users;
+                    for(let i = 0; i < result.users.length; i++){
+                        let user = new User(
+                                result.users[i].username,
+                                result.users[i].email,
+                                result.users[i].password,
+                                result.users[i].fullName,
+                                result.users[i].profilePic,
+                                result.users[i].location,
+                                result.users[i].biography,
+                                result.users[i].level,
+                                result.users[i].date,
+                                result.users[i].items,
+                                result.users[i]._id); 
+                                this.users.push(user);
+                    }
+                    console.log("THE MANIPULATED RESULTS INTO USERS ARRAY IS..");
+                    console.log(this.users);
                     return this.users;
                 })
                 .catch((error: Response) => Observable.throw(error.json()));

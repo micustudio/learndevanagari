@@ -9,7 +9,7 @@
       </div>
 
     <div class="col-md-8">
-      <div *ngIf="isLoggedIn()" class="edit-profile"><p class="logged-in">You are Logged In. </p> <button type="button" class="btn btn-primary" [routerLink]="['/profile/edit']">Edit Profile</button></div>      
+      <div *ngIf="isLoggedIn() && belongToUser()" class="edit-profile"><p class="logged-in">You are Logged In. </p> <button type="button" class="btn btn-primary" [routerLink]="['/profile/edit']">Edit Profile</button></div>      
       <h1>{{ username }}</h1>
       <h5 class="meta-span">{{ fullName }}</h5>
       <p class="meta-span">Level: {{ level }}</p>

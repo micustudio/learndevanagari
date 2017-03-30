@@ -1,7 +1,9 @@
 <div class="container">
+  <h1>LEADERBOARDS</h1>
   <app-leaderboardinstance
-    *ngFor="let individualUser of users" 
+    *ngFor="let individualUser of users; let i = index"
     [inputUser]="individualUser"
+    [index] = "i"
     >
   </app-leaderboardinstance>
 </div>

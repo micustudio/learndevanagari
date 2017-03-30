@@ -25,6 +25,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
   correct: boolean;
   unseen: boolean;
   histories = [];
+  englishLetter: string;
 
   constructor(private userService: UserService) { }
 
@@ -92,6 +93,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     this.newHistory = true;
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
+                    this.englishLetter = this.user.items[this.rand].letter;
                 },
                 error => console.error(error));
         }, 500);
@@ -120,7 +122,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                                 data.date,
                                 data.items,
                                 data.userId);
-                    console.log("The  user ON INIT IS.....");
+                    console.log("The  user ONp,/ INIT IS.....");
                     console.log(user);
                     this.user = user;
                     this.userService.setUser(this.user);
@@ -128,6 +130,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     this.max = this.user.items.length;
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
+                    this.englishLetter = this.user.items[this.rand].letter;
                     this.unseen = this.user.items[this.rand].unseen;
                     this.nextNewItem = true;
                     // console.log(this.character);

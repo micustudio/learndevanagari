@@ -25,6 +25,7 @@
             <p class="new-char" *ngIf="unseen"><i class="fa fa-star" aria-hidden="true"></i> New Item!</p>
             <div class="form-box">
                 <p class="character">{{ character }}</p>
+                <div *ngIf="!nextNewItem" class="english-letter">{{ englishLetter }}</div>
                 <div class="two-way-height">
                     <p class="two-way">{{ check }}</p>
                 </div>

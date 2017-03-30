@@ -105,3 +105,11 @@ button {
 .fa-star {
     color: #FFEB3B;
 }
+
+.english-letter {
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    color: #2ecc71;
+    margin-top: -50px;
+}

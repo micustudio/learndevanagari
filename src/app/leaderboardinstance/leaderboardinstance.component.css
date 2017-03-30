@@ -1,14 +1,73 @@
 .row {
-    width: 100%;
-    background-color: indigo;
     padding: 2px;
+    margin: 10px
 }
 
 .card {
+    width: 100%;
     border-radius: 2px;
     padding: 4px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    cursor: pointer;
+    -webkit-transition: .1s ease-out;
+    transition: .1s ease-out;
 }
 
-img {
-    display: inline-block;
+.card:hover {
+    background-color: #3498db;
+    transform: translate(0, -10%);
+
+}
+
+.img-fluid {
+    width: 12vh;
+}
+
+
+.first-place{
+    font-size: 3em;
+    color: #FFEE58;
+    transform: translate(-50%);
+}
+
+.second-place{
+    font-size: 2em;
+    color: #E0E0E0;
+    transform: translate(-50%);
+}
+
+.third-place{
+    font-size: 1em;
+    color: #795548;
+    transform: translate(-50%);
+}
+
+.far-left-section {
+    align-self: center;
+    width: 5vw;
+    margin-left: 2vw;
+}
+.left-section {
+}
+
+.middle-section {
+    width: 50vw;
+    margin-left: 2vw;
+}
+
+.right-section{
+    align-self: center;
+}
+
+h1 {
+    color: #888;
+    -webkit-transition: .1s ease-out;
+    transition: .1s ease-out;
+}
+
+.card:hover h1 {
+    color: #EEE;
+
 }

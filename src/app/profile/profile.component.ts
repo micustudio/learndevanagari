@@ -64,4 +64,8 @@ export class ProfileComponent implements OnInit {
      return this.userService.isLoggedIn();
   }
   
+  belongToUser(){
+    return localStorage.getItem('userId') == this.path;
+  }
+  
 }
