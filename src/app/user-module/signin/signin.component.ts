@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../user.service';
+import { UserService } from '../user.service';
 import { User } from '../user.model';
 
 import { trigger, state, style, transition, animate, keyframes } from '@angular/core';

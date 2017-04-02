@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../user-module/user.service';
 import { User } from '../user-module/user.model';
 
 import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.userService.signedUser.subscribe(
              (user: User) => { 
-               this.user = user;
+              this.user = user;
               this.userId = user.userId;
                console.log(this.user);
                this.userService.getGravatar(this.user.email).subscribe(

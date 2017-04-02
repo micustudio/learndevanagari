@@ -94,6 +94,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
                     this.englishLetter = this.user.items[this.rand].letter;
+                    this.unseen = this.user.items[this.rand].unseen;
                 },
                 error => console.error(error));
         }, 500);

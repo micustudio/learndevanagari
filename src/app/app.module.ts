@@ -20,7 +20,6 @@ import { AuthGuard } from './auth-guard.service';
 import { ItemModule } from "./item-module/item.module";
 import { UserModule } from "./user-module/user.module";
 import { StudyComponent } from './study/study.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LearnComponent } from './learn/learn.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
@@ -38,7 +37,6 @@ import { LeaderboardinstanceComponent } from './leaderboardinstance/leaderboardi
     ContactComponent,
     AdminComponent,
     StudyComponent,
-    DashboardComponent,
     ProfileComponent,
     LearnComponent,
     ProfileEditComponent,
