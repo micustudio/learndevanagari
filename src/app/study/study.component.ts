@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { UserService } from '../user.service';
+import { UserService } from '../user-module/user.service';
 import { User } from '../user-module/user.model';
 import { Item } from '../item-module/item.model';
 

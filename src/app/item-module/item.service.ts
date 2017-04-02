@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
@@ -9,6 +9,7 @@ import { Item } from "./item.model";
 @Injectable()
 export class ItemService {
 private items: Item[] = [];
+editedItem = new EventEmitter<Item>();
 
   constructor(private http: Http) { }
 

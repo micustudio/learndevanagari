@@ -2,9 +2,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
-import { domain } from './app.domain';
-import { User } from './user-module/user.model';
-import { Item } from './item-module/item.model';
+import { domain } from '../app.domain';
+import { User } from './user.model';
+import { Item } from '../item-module/item.model';
 
 @Injectable()
 export class UserService {

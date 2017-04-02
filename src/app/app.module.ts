@@ -14,7 +14,7 @@ import { AdminComponent } from './admin-module/admin/admin.component';
 
 import { AdminService } from './admin-module/admin.service';
 import { MetaService } from './meta.service';
-import { UserService } from './user.service';
+import { UserService } from './user-module/user.service';
 import { AuthGuard } from './auth-guard.service';
 
 import { ItemModule } from "./item-module/item.module";

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const Item = require('../models/item');
+const User = require('../models/user');
+
 var jwt = require('jsonwebtoken');
 
 
@@ -37,8 +39,8 @@ router.use('/', function(req, res, next){
         next();
     })
 });
-//
 
+// ADD ITEM
 router.post('/', function(req, res, next) {
     var decoded = jwt.decode(req.query.token);
         var item = new Item({
@@ -48,16 +50,31 @@ router.post('/', function(req, res, next) {
             translation: req.body.translation,
             combination: req.body.combination
         });
-        item.save(function(err, result) {
+        item.save(function(err, resultItem) {
                 if (err) {
                     return res.status(500).json({
                         title: 'An error occurred',
                         error: err
                     });
                 }
-                res.status(201).json({
-                    message: 'Saved item',
-                    obj: result
-                });
+                User.find({})
+                    .exec(function(err, users) {
+
+                        if(err){
+                            return res.status(500).json({
+                            title: 'An error occurred',
+                            error: err
+                            });
+                        }
+                        for(let i = 0; i < users.length; i++){
+                            users[i].items.push(resultItem);
+                            console.log("pushed.");
+                            users[i].save();
+                        }
+                                res.status(200).json({
+                                    message: 'Successfully add Item!',
+                                    obj: resultItem
+                                });
+                        });
+                    });
         });
-});

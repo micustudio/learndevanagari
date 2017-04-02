@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../user-module/user.service';
 import { User } from '../user-module/user.model';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { User } from '../user-module/user.model';
-import { UserService } from '../user.service';
+import { UserService } from '../user-module/user.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 

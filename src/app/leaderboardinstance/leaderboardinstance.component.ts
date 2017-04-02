@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../user-module/user.model';
-import { UserService } from '../user.service';
+import { UserService } from '../user-module/user.service';
 
 @Component({
   selector: 'app-leaderboardinstance',
