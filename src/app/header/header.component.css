@@ -2,8 +2,15 @@
     cursor: pointer;
 }
 
+.level-counter {
+    margin-top: 12px;
+    font-size: 10px;
+}
+
 .gravatar {
-    margin-top: -2px;
+    margin-top: 8px;
+    margin-right: 2px;
+    margin-left: -4px;
     width: 24px;
     height: 24px;
     padding: 2px;
@@ -29,9 +36,4 @@
     cursor: pointer;
     background-color: #2980b9;
     color: #ecf0f1;
-}
-
-.level-counter {
-    font-size: 10px;
-    margin-top: 5px;
 }

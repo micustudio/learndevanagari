@@ -12,11 +12,15 @@
                 <div class="pages" routerLinkActive="active" [routerLink]="['/learn']" *ngIf="isLoggedIn()">learn</div>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn()">
-                <a class="level-counter nav-link" [routerLink]="['/profile', userId]" *ngIf="userDetails">Lvl.{{ level }}  <img src="{{ gravatarUrl }}" alt="" class="gravatar" *ngIf="userDetails"></a>
+                <a class="level-counter nav-link" [routerLink]="['/profile', userId]" *ngIf="userDetails">Lvl.{{ level }}</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn()">
+                <img src="{{ gravatarUrl }}" alt="" class="gravatar" *ngIf="userDetails">
             </li>
             <li class="nav-item" *ngIf="isLoggedIn()">
                 <a class="nav-link" [routerLink]="['/profile', userId]"  *ngIf="userDetails">Welcome, {{ user.username }}!</a>            
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" routerLinkActive="active" [routerLink]="['/signup']" *ngIf="!isLoggedIn()">signup</a>
             </li>
