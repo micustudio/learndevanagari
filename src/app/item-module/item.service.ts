@@ -42,6 +42,7 @@ editedItem = new EventEmitter<Item>();
                                 result.obj.correct, 
                                 result.obj.incorrect, 
                                 result.obj.streak, 
+                                result.obj.highestStreak,
                                 result.obj.rank, 
                                 result.obj.unseen, 
                                 result.obj.impressions,
@@ -85,7 +86,9 @@ editedItem = new EventEmitter<Item>();
                             item.translation,
                             item.combination,
                             item.correct,
+                            item.incorrect,
                             item.streak,
+                            item.highestStreak,
                             item.rank,
                             item.unseen,
                             item.impressions,
@@ -98,8 +101,11 @@ editedItem = new EventEmitter<Item>();
                 .catch((error: Response) => Observable.throw(error.json()));
     }
 
-
-
-
+    setItem(item: Item){
+        this.editedItem.emit(item);
+        console.log("The emitted item from the item service end!");
+        console.log("The emitted user is");
+        console.log(item);
+    }
 
 }

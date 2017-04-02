@@ -52,10 +52,13 @@ export class ItemAddComponent implements OnInit {
         form.resetForm();
     }
 
-    
-
 
   ngOnInit() {
+          this.itemService.editedItem.subscribe(
+             (item: Item) => { 
+              this.item = item;
+              console.log("we connected an Item to the item-add component!");
+        });
   }
 
 }
