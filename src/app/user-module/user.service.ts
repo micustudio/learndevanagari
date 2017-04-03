@@ -16,8 +16,8 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-    signedUpMessage(){
-        this.signedUpSign = true;
+    signedUpMessage(state: boolean){
+        this.signedUpSign = state;
     }
     signedUpSuccessful(){
         return this.signedUpSign;
@@ -104,7 +104,7 @@ export class UserService {
                                 result.users[i].profilePic,
                                 result.users[i].location,
                                 result.users[i].biography,
-                                result.users[i].level,
+                                result.users[i].exp,
                                 result.users[i].date,
                                 result.users[i].items,
                                 result.users[i]._id); 
@@ -136,7 +136,7 @@ export class UserService {
                                 result.user.profilePic,
                                 result.user.location,
                                 result.user.biography,
-                                result.user.level,
+                                result.user.exp,
                                 result.user.date,
                                 result.user.items,
                                 result.user._id);
@@ -162,7 +162,7 @@ export class UserService {
                                 result.user.profilePic,
                                 result.user.location,
                                 result.user.biography,
-                                result.user.level,
+                                result.user.exp,
                                 result.user.date,
                                 result.user.items,
                                 result.user._id);

@@ -28,9 +28,9 @@ export class HeaderComponent implements OnInit {
                console.log(this.user);
                this.userService.getGravatar(this.user.email).subscribe(
                  (url: string) => {
-                   console.log("The GG URL is..." + url);
                    this.gravatarUrl = url;
-                   this.level = Math.floor(Math.sqrt(user.level));
+                   this.level = Math.floor(Math.sqrt(user.exp));
+                   console.log("THE LEVEL IS... " + this.level);
                    this.userDetails = true;
                });
                

@@ -9,7 +9,7 @@ export class User {
         public profilePic?: string,
         public location?: string,
         public biography?: string,
-        public level?: number,
+        public exp?: number,
         public date?: Date,
         public items?: Item[],
         public userId?: string){

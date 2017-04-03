@@ -42,11 +42,11 @@ export class StudyComponent implements OnInit, AfterViewInit {
         this.user.items[this.rand].streak++;
         if(this.user.items[this.rand].streak > 2){
             this.user.items[this.rand].rank += 2;
-            this.user.level += 2;
+            this.user.exp += 2;
         }
         else{
             this.user.items[this.rand].rank++;
-            this.user.level++;
+            this.user.exp++;
         }
         if (this.user.items[this.rand].streak > this.user.items[this.rand].highestStreak){
             this.user.items[this.rand].highestStreak = this.user.items[this.rand].streak;
@@ -119,11 +119,11 @@ export class StudyComponent implements OnInit, AfterViewInit {
                                 data.profilePic,
                                 data.location,
                                 data.biography,
-                                data.level,
+                                data.exp,
                                 data.date,
                                 data.items,
                                 data.userId);
-                    console.log("The  user ONp,/ INIT IS.....");
+                    console.log("The  user ON ngINIT IS.....");
                     console.log(user);
                     this.user = user;
                     this.userService.setUser(this.user);

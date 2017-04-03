@@ -51,6 +51,7 @@ export class SigninComponent implements OnInit, AfterContentInit {
                     console.log("The  user is...........");
                     console.log(user);
                     this.userService.emitUser(user);*/
+                    this.userService.signedUpMessage(false);
                     this.router.navigateByUrl('/study');
                 },
                 error => console.error(error)

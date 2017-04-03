@@ -25,7 +25,7 @@ thirdPlace: boolean;
                    this.index++;
                    console.log("The GG URL is..." + url);
                    this.gravatarUrl = url;
-                   this.level = Math.floor(Math.sqrt(this.user.level));
+                   this.level = Math.floor(Math.sqrt(this.user.exp));
                    console.log("The USER is...");
                    console.log(this.user);
                    

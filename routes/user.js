@@ -128,7 +128,7 @@ router.patch('/updateitem', (req, res) => {
         user.fullName = req.body.fullName;
         user.location = req.body.location;
         user.biography = req.body.biography;
-        user.level = req.body.level;
+        user.exp = req.body.exp;
         for(i = 0; i < user.items.length; i++){
             console.log("The user char is ");
             console.log(user.items[i].char);

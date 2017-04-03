@@ -31,8 +31,8 @@ export class ProfileComponent implements OnInit {
                             (user: User) => {
                                 this.user = user;
                                 this.username = this.user.username;
-                                this.exp = this.user.level;
-                                this.level = Math.floor(Math.sqrt(this.user.level));
+                                this.exp = this.user.exp;
+                                this.level = Math.floor(Math.sqrt(this.user.exp));
                                 console.log("Thus, we got a user!");
                                 console.log(this.user);
                                 this.userService.getGravatar(this.user.email).subscribe(
