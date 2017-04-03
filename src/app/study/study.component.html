@@ -1,4 +1,5 @@
 <div class="history-bar">
+    <div *ngIf="leveledUp" class="leveled-up">YOU LEVELED UP!</div>
     <p class="history-text">history</p>
     <div *ngFor="let history of histories">
         <div class="history-block">
@@ -20,7 +21,12 @@
         </div>
     </div>
 </div>
+<div class="bar" [style.width]='setProgressWidth()'></div>
 <div class="jumbotron">
+    <div class="footer-stats">
+        <span class="meta-stats">total seen: {{ totalCorrect + totalIncorrect }}</span><span class="meta-stats correct">correct: {{ totalCorrect }}</span><span class="meta-stats incorrect" >incorrect: {{ totalIncorrect }}</span><span class="meta-stats">percent correct: {{ totalCorrect / (totalCorrect + totalIncorrect) | percent:'1.0-0' }}</span>
+
+    </div>
         <div class="form-box">
             <p class="new-char" *ngIf="unseen"><i class="fa fa-star" aria-hidden="true"></i> New Item!</p>
             <div class="form-box">

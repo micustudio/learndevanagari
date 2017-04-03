@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 export class StudyComponent implements OnInit, AfterViewInit {
   @ViewChildren('input') vc;
   user: User;
+  initialLevel: number;
+  level: number;
+  leveledUp: boolean = false
   nextNewItem: boolean = false;
   newHistory: boolean = false;
   myForm: FormGroup;
@@ -27,6 +30,13 @@ export class StudyComponent implements OnInit, AfterViewInit {
   histories = [];
   englishLetter: string;
 
+  // stats
+  totalCorrect: number = 0;
+  totalIncorrect: number = 0;
+  percentageCorrect: number = 0;
+  expFromLevel: number;
+  progressPercent: number;
+
   constructor(private userService: UserService) { }
 
   onCheck(){
@@ -38,6 +48,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
     // If the item is Correct
     if(this.user.items[this.rand].letter == this.myForm.value.check){
         this.correct = true;
+        this.totalCorrect++;
         this.user.items[this.rand].correct++;
         this.user.items[this.rand].streak++;
         if(this.user.items[this.rand].streak > 2){
@@ -55,6 +66,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
     // If the item is Incorrect
     else{
         this.correct = false;
+        this.totalIncorrect++;
         this.user.items[this.rand].incorrect++;
         this.user.items[this.rand].streak = 0;
         this.user.items[this.rand].rank--;
@@ -80,6 +92,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
     });
 
     this.userService.setUser(this.user);
+    this.setProgress();
 
     // Function to calculate next item
     setTimeout(() => { 
@@ -91,6 +104,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     console.log(data);
                     this.nextNewItem = true;
                     this.newHistory = true;
+                    
                     this.rand = this.getRandomIntInclusive(0, this.max);
                     this.character = this.user.items[this.rand].char;
                     this.englishLetter = this.user.items[this.rand].letter;
@@ -127,6 +141,9 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     console.log(user);
                     this.user = user;
                     this.userService.setUser(this.user);
+                    this.initialLevel = Math.floor(Math.sqrt(this.user.exp));
+                    this.setProgress();
+                    // ITEM
                     this.items = user.items;
                     this.max = this.user.items.length;
                     this.rand = this.getRandomIntInclusive(0, this.max);
@@ -134,13 +151,6 @@ export class StudyComponent implements OnInit, AfterViewInit {
                     this.englishLetter = this.user.items[this.rand].letter;
                     this.unseen = this.user.items[this.rand].unseen;
                     this.nextNewItem = true;
-                    // console.log(this.character);
-                    // console.log(this.user.items.length);
-                    // for(let i = 0; i < this.user.items.length; i++){
-                    //   this.characters.push(this.user.items[i].char);
-                    // }
-                    // console.log(this.characters);
-                    console.log(this.items);
                 },
                 error => console.error(error)
             )
@@ -162,5 +172,24 @@ export class StudyComponent implements OnInit, AfterViewInit {
       return hexString;
   }
 
+  setProgress(){
+      // PROGRESS BAR
+        this.level = Math.floor(Math.sqrt(this.user.exp));
+        if(this.level != this.initialLevel) {
+            this.leveledUp = true;
+            this.initialLevel = this.level;
+        }
+        else {
+            this.leveledUp = false;
+        }
+        this.expFromLevel = this.user.exp - Math.pow((this.level), 2);
+        console.log(`THE EXP FROM ORIGINAL LEVEL IS...: ${this.expFromLevel}`);
+        this.progressPercent = (this.expFromLevel / (Math.pow((this.level + 1), 2) - Math.pow(this.level, 2))) * 100;
+        console.log(`THE PROGRESS PERECENT IS....: ${this.progressPercent}`);
+  }
+
+  setProgressWidth() {
+      return `${this.progressPercent}%`;
+  }
 
 }

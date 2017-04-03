@@ -34,7 +34,7 @@
 }
 
 .jumbotron {
-    padding-top: 16px;
+    padding-top: 0px;
 }
 
 td {
@@ -55,12 +55,24 @@ td {
     font-size: 20px;
 }
 
+
 button {
     border-radius: 2px;
     cursor: pointer;
     height: 43px;
     margin-left: 2px;
     padding: 0px 18px;
+}
+
+@media (max-width: 500px) {
+    .form-group {
+        margin: 0 auto;
+        width: 100%;
+    }
+    button {
+            width: 100%;
+            margin-left: 0px;
+        }
 }
 
 .character {
@@ -112,4 +124,46 @@ button {
     font-size: 36px;
     color: #2ecc71;
     margin-top: -50px;
+}
+
+.footer-stats {
+    height: 22px;
+    border-radius: 2px;
+    background-color: #3498db;
+}
+
+.meta-stats {
+    color:  #ecf0f1;
+    padding: 0px 4px 4px 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.correct {
+    color: #27ae60;
+}
+
+.incorrect {
+    color: #c0392b;
+}
+
+.bar {
+    background-image: linear-gradient(45deg, #ecf0f1, #c0392b);
+    height: 2px;
+    -webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+}
+
+.leveled-up {
+    position: absolute;
+    margin-top: 0%;
+    width: 100%;
+    border-radius: 2px;
+    margin: 0px 20px 20xp 20px;
+    padding: 6px 4px;
+    text-align: center;
+    background-color: #FFEB3B;
+    color: #FEFEFE;
+    font-weight: bold;
+    font-size: 20px;
 }
