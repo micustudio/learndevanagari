@@ -70,6 +70,16 @@ editedItem = new EventEmitter<Item>();
                     .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    deleteItem(item: Item) {
+        this.items.splice(this.items.indexOf(item), 1);
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+        return this.http.delete(domain + 'item/' + item.itemId + token)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error.json()));
+        }
+
 
     getItems(){
         return this.http.get(domain + 'item/')
@@ -107,5 +117,7 @@ editedItem = new EventEmitter<Item>();
         console.log("The emitted user is");
         console.log(item);
     }
+
+    
 
 }

@@ -24,9 +24,14 @@ export class ItemComponent implements OnInit {
 
   onDelete() {
     console.log("We doing the alerting!");
-    if (confirm('Are you sure you want to like delete this thing?') ){
-      console.log("DELETED!");
-    } else {
+    if (confirm(`Are you sure you want to like delete this thing that is ${this.item.char} ?`) ){
+        console.log("DELETED!");
+        this.itemService.deleteItem(this.item)
+            .subscribe(
+                result => console.log(result)
+            );
+    } 
+    else {
     // Do nothing!
     }
   }

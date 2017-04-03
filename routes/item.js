@@ -7,7 +7,6 @@ const User = require('../models/user');
 var jwt = require('jsonwebtoken');
 
 
-
 router.get('/', (req, res) => {
      Item.find({})
             .exec(function(err, items) {
@@ -23,8 +22,6 @@ router.get('/', (req, res) => {
                 });
             });
 });
-
-module.exports = router;
 
 
 // Authentication
@@ -140,3 +137,65 @@ router.patch('/:id', function(req, res, next) {
       });
     });
 });
+
+// DELETE
+router.delete('/:id', function (req, res, next) {
+    Item.findById(req.params.id, function (err, item) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!item) {
+            return res.status(500).json({
+                title: 'No Item Found!',
+                error: {message: 'Item not found'}
+            });
+        }
+        let placeHolderChar = item.char;
+        console.log("The place holder char for the delete route is....: " + item.char)
+        /*if (item.user != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: {message: 'Users do not match'}
+            });
+        } */
+        item.remove(function (err, result) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+                User.find({})
+                    .exec(function(err, users) {
+                        if(err){
+                            return res.status(500).json({
+                            title: 'An error occurred',
+                            error: err
+                            });
+                        }
+                        for(let i = 0; i < users.length; i++){
+                            for(let j = 0; j < users[i].items.length; j++){
+                                if(placeHolderChar == users[i].items[j].char){
+                                    console.log("THERE IS A MATCH! AND IT WILL BE DELETED!");
+                                    let charIndex = j;
+                                    if (charIndex > -1) {
+                                        users[i].items.splice(charIndex, 1);
+                                    }
+                                    users[i].save();
+                                }
+                            }
+                        }
+                        res.status(200).json({
+                            message: 'Successfully removed item for all the users!!!',
+                            obj: item
+                        });
+                    });    
+        });
+    });
+});
+
+
+module.exports = router;
