@@ -1,3 +1,33 @@
-<p>
-  stats works!
-</p>
+<div class="container-fluid" *ngIf="dataRetrieved">
+  <div class="container" >
+    <h1>stats</h1>
+    <div class="row">
+        <span *ngFor="let item of seenItems">
+              <div class="item-box" [style.color]='setColor(item)'>
+                {{ item.char }}
+              </div>
+        </span>
+        <span *ngFor="let item of unseenItems">
+              <div class="item-box" [style.color]='setUnseenColor(item)'>
+                {{ item.char }}
+              </div>
+        </span>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+        <h1>most correct</h1>
+        <div class="item-single" [style.color]='setColor(mostCorrect)'>
+          {{ mostCorrect.char }}
+        </div>
+    </div>
+    <br>
+      <div class="row">
+        <h1>highest streak</h1>
+        <div class="item-single" [style.color]='setColor(highestStreak)'>
+          {{ highestStreak.char }}
+        </div>
+    </div>
+  </div>
+</div>
