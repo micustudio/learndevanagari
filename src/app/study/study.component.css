@@ -34,7 +34,9 @@
 }
 
 .jumbotron {
-    padding-top: 0px;
+    padding: 16px 0px;
+    margin: 0px;
+    min-height: 75vh;
 }
 
 td {
@@ -95,17 +97,9 @@ button {
     overflow: hidden;
 }
 
-    /*.form-group {
-        display: inline;
-        float:left;
-    }
-
-    .next-to-text-input {
-        display: inline;
-    }*/
-    .form-group {
-        float:left;
-    }
+.form-group {
+    float:left;
+}
 
 .new-char {
     text-align: center;
@@ -126,15 +120,14 @@ button {
     margin-top: -50px;
 }
 
-.footer-stats {
-    height: 22px;
-    border-radius: 2px;
-    background-color: #3498db;
+.bar-stats {
+    background-color: #bdc3c7;
+    padding: 0px 0px 6px 0px;
 }
 
 .meta-stats {
+    padding: 0px 8px;
     color:  #ecf0f1;
-    padding: 0px 4px 4px 4px;
     font-size: 10px;
     font-weight: bold;
 }
