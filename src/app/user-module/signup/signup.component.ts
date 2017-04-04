@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
 
     onSignup(){
         let user = new User(
-            this.myForm.value.username,
+            this.myForm.value.username.replace(/ /g, ''),
             this.myForm.value.email,
             this.myForm.value.password
         );
