@@ -33,7 +33,7 @@ export class StudyComponent implements OnInit, AfterViewInit {
   // stats
   totalCorrect: number = 0;
   totalIncorrect: number = 0;
-  percentageCorrect: number = 0;
+  percentageCorrect: string;
   expFromLevel: number;
   progressPercent: number;
 
@@ -186,6 +186,14 @@ export class StudyComponent implements OnInit, AfterViewInit {
         console.log(`THE EXP FROM ORIGINAL LEVEL IS...: ${this.expFromLevel}`);
         this.progressPercent = (this.expFromLevel / (Math.pow((this.level + 1), 2) - Math.pow(this.level, 2))) * 100;
         console.log(`THE PROGRESS PERECENT IS....: ${this.progressPercent}`);
+        if(this.totalCorrect + this.totalIncorrect != 0){
+            this.percentageCorrect = ((this.totalCorrect / (this.totalCorrect + this.totalIncorrect))*100).toFixed(0);
+        }
+        else {
+            this.percentageCorrect = '0';
+        }
+        
+
   }
 
   setProgressWidth() {

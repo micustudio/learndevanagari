@@ -10,8 +10,9 @@ import { StudyComponent } from './study/study.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent} from './profile-edit/profile-edit.component';
 import { LearnComponent } from './learn/learn.component';
-import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
+import { StatsComponent } from './stats/stats.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 import { AuthGuard } from './auth-guard.service';
@@ -29,6 +30,7 @@ const APP_ROUTES: Routes = [
     { path: 'leaderboard', component: LeaderboardComponent},
     { path: 'study', component: StudyComponent, canActivate: [AuthGuard]},
     { path: 'learn', component: LearnComponent, canActivate: [AuthGuard]},
+    { path: 'stats', component: StatsComponent, canActivate: [AuthGuard]},
     { path: '**', component: StudyComponent, canActivate: [AuthGuard]}
 ];
 

@@ -24,7 +24,7 @@
 <div class="bar" [style.width]='setProgressWidth()'></div>
 <div class="jumbotron">
     <div class="footer-stats">
-        <span class="meta-stats">total seen: {{ totalCorrect + totalIncorrect }}</span><span class="meta-stats correct">correct: {{ totalCorrect }}</span><span class="meta-stats incorrect" >incorrect: {{ totalIncorrect }}</span><span class="meta-stats">percent correct: {{ totalCorrect / (totalCorrect + totalIncorrect) | percent:'1.0-0' }}</span>
+        <span class="meta-stats">total seen: {{ totalCorrect + totalIncorrect }}</span><span class="meta-stats correct">correct: {{ totalCorrect }}</span><span class="meta-stats incorrect" >incorrect: {{ totalIncorrect }}</span><span class="meta-stats">percent correct: {{ percentageCorrect }}%</span>
 
     </div>
         <div class="form-box">

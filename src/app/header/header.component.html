@@ -11,6 +11,9 @@
             <li class="nav-item">
                 <div class="pages" routerLinkActive="active" [routerLink]="['/learn']" *ngIf="isLoggedIn()">learn</div>
             </li>
+            <li class="nav-item">
+                <div class="pages" routerLinkActive="active" [routerLink]="['/stats']" *ngIf="isLoggedIn()">stats</div>
+            </li>
             <li class="nav-item" *ngIf="isLoggedIn()">
                 <a class="level-counter nav-link" [routerLink]="['/profile', userId]" *ngIf="userDetails">Lvl.{{ level }}</a>
             </li>

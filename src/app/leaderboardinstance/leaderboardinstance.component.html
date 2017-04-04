@@ -1,31 +1,3 @@
-<!-- <div class="row">
-    <div class="card">
-          <table>
-              <tr>
-                  <td class="left-section">
-                      <img class="img-fluid" src="{{ gravatarUrl }}">
-                  </td>
-                  <td class="middle-section">
-                      <table>
-                          <tr class="username">
-                              <td>{{user.username}}</td>
-                          </tr>
-                          <tr class="meta">
-                              <td>Lvl. {{ level }} <span>Exp. {{ user.level }}</span></td>
-                          </tr>
-                      </table>
-                  </td>
-                  <td class="right-section">
-                      <i *ngIf="firstPlace" class="fa fa-trophy first-place" aria-hidden="true"></i>
-                      <i *ngIf="secondPlace" class="fa fa-trophy second-place" aria-hidden="true"></i>
-                      <i *ngIf="thirdPlace" class="fa fa-trophy third-place" aria-hidden="true"></i>
-                  </td>
-              </tr>
-          </table>
-      </div>
-</div> -->
-
-
 <div class="row">
     <div class="card" [routerLink]="['/profile', userId]">
         <div class="far-left-section">

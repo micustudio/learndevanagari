@@ -17,7 +17,7 @@
 
 .card:hover {
     background-color: #3498db;
-    transform: translate(0, -10%);
+    transform: translate(0, -5%);
 
 }
 
@@ -49,8 +49,6 @@
     width: 5vw;
     margin-left: 2vw;
 }
-.left-section {
-}
 
 .middle-section {
     width: 50vw;
@@ -69,5 +67,11 @@ h1 {
 
 .card:hover h1 {
     color: #EEE;
+}
+.card:hover h3 {
+    color: #EEE;
+}
 
+.card:hover span {
+    color: #EEE;
 }

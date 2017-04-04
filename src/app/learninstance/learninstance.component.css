@@ -1,0 +1,19 @@
+.item-box {
+    padding: 10px 20px;
+    border-radius: 2px;
+    background-color: #FEFEFE;
+    -webkit-transition: .1s ease-out;
+    transition: .1s ease-out;
+    cursor: pointer;
+}
+
+.item-box:hover {
+    transform: translate(0, -5%);
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+.char {
+    text-align: center;
+    font-size: 36px;
+}

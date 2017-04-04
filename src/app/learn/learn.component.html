@@ -1,3 +1,79 @@
-<p>
-  learn works!
-</p>
+<div class="container-fluid">
+  <div class="container">
+    <h1>Vowels:</h1>
+    <table>
+      <tbody>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="i <= 12">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Consonants with Vowel अ (a):</h1>
+    <table>
+      <tbody>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="13 <= i && i <= 17">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="18 <= i && i <= 22">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="23 <= i && i <= 27">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="28 <= i && i <= 32">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="33 <= i && i <=37">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="38 <= i && i <=41">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="42 <= i && i <=45">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>
+        <tr>
+          <span *ngFor="let item of items; let i = index">
+              <td *ngIf="46 <= i && i <=48">
+                <app-learninstance [item]="item"></app-learninstance>
+              </td>
+          </span>
+        </tr>        
+      </tbody>
+    </table>
+    <h1>Vowels in combination with consonants "k", starting with क (ka);</h1>
+    <p>Under Construction</p>
+  </div>
+</div>
