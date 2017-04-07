@@ -11,7 +11,7 @@
                 <h3>{{user.username}}</h3>
             </div>
             <div>
-                <span>Lvl. {{ level }} </span><span>Exp. {{ user.exp }}</span>
+                <span class="level">Lvl. {{ level }} </span><span class="exp">Exp. {{ user.exp }}</span><span class="you" *ngIf="belongToUser()">(You)</span>
             </div>
         </div>
         <div class="right-section">

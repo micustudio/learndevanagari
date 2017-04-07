@@ -65,6 +65,10 @@ h1 {
     transition: .1s ease-out;
 }
 
+h3 {
+    color: #444;
+}
+
 .card:hover h1 {
     color: #EEE;
 }
@@ -74,4 +78,20 @@ h1 {
 
 .card:hover span {
     color: #EEE;
+}
+
+.level {
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+.exp {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+.you {
+    font-weight: bold;
+    font-size: 10px;
 }

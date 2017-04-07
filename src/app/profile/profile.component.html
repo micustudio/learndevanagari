@@ -12,11 +12,11 @@
       <div *ngIf="isLoggedIn() && belongToUser()" class="edit-profile"><p class="logged-in">You are Logged In. </p> <button type="button" class="btn btn-primary" [routerLink]="['/profile/edit']">Edit Profile</button></div>      
       <h1>{{ username }}</h1>
       <h5 class="meta-span">{{ fullName }}</h5>
-      <p class="meta-span">Level: {{ level }}</p>
-      <p class="meta-span">Exp: {{ exp }}</p>
+      <p class="meta-span level">Level: {{ level }}</p>
+      <p class="meta-span exp">Exp: {{ exp }}</p>
       <p>Location: {{ location }}</p>
       <h6>Bio:</h6>
-      <p>{{ biography }}</p>
+      <p><i class="fa fa-quote-left" aria-hidden="true"></i> {{ biography }} <i class="fa fa-quote-right" aria-hidden="true"></i></p>
       </div>
     </div>
   </div>

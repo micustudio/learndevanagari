@@ -25,6 +25,33 @@
     display: inline;
 }
 
+h1 {
+    color: #222;
+}
+
+h5 {
+    color: #444;
+}
+
+h6 {
+    letter-spacing: 4px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.level {
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+.exp {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #555;
+}
+
 .edit-profile {
     display: block;
     float: right;

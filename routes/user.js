@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 //const gravatar = require('gravatar');
 const gravatar = require('gravatar-api');
 
-// need it to add the new items
+// need model to add the new items
 const Item = require('../models/item');
 
 router.get('/', (req, res) => {
@@ -38,7 +38,7 @@ router.post('/gravatar', (req, res) => {
 router.get('/all', (req, res) => {
     console.log("Hello this is from the get all users route");
         User.find({})
-        .sort({'level': -1})
+        .sort({'exp': -1})
         .limit(100)
         .exec(function(err, users) {
             if(err){

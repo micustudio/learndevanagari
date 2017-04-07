@@ -46,4 +46,8 @@ thirdPlace: boolean;
       this.thirdPlace = true;
   }
 
+    belongToUser(){
+    return localStorage.getItem('userId') == this.userId;
+  }
+
 }
